@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <title>Nurul Iman - Website Optimal (Fixed v2)</title> <script src="https://cdn.tailwindcss.com"></script>
+    <title>Nurul Iman - Website Optimal (Diperbaiki)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <style>
@@ -11,12 +12,14 @@
         :root { --accent-color: #e63984; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: "Poppins", sans-serif; /* Pastikan font ini diterapkan */
+            font-family: "Poppins", sans-serif;
             background-color: #080415;
-            color: #e0e0e0; line-height: 1.7; overflow-x: hidden;
-            padding-top: 15px;
-            -webkit-font-smoothing: antialiased; /* Perhalus font di Webkit */
-            -moz-osx-font-smoothing: grayscale; /* Perhalus font di Firefox */
+            color: #e0e0e0;
+            line-height: 1.7;
+            overflow-x: hidden;
+            padding-top: 80px; /* Increased padding to prevent overlap with sticky header */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #080415; }
@@ -25,34 +28,56 @@
 
         /* --- Header & Navigasi --- */
         header {
-            background-color: rgba(8, 4, 21, 0.6); backdrop-filter: blur(10px);
-            position: sticky; top: 0; z-index: 1000; width: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 5px 0;
+            background-color: rgba(8, 4, 21, 0.6);
+            backdrop-filter: blur(10px);
+            position: fixed; /* Changed to fixed for better stickiness */
+            top: 0; left: 0; /* Ensure it spans full width */
+            z-index: 1000; width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 5px 0;
             transition: background-color 0.4s ease, border-bottom 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
         }
         header.scrolled {
             background-color: rgba(8, 4, 21, 0.85);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2px 0; box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            padding: 2px 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
         }
         .header-container {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 10px 24px; max-w-7xl; margin: auto; transition: padding 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 24px;
+            max-w-7xl; margin: auto;
+            transition: padding 0.4s ease;
         }
         header.scrolled .header-container { padding: 8px 24px; }
-        .logo-container { display: flex; align-items: center; space-x-3; }
-        .logo-container img { width: 36px; height: 36px; object-fit: contain; } /* Pastikan logo terlihat */
-        .logo-container span { font-weight: 600; }
-        nav#main-nav { display: flex; gap: 3rem; text-lg; }
-        nav#main-nav a { display: block; padding: 10px 0; position: relative; text-decoration: none; color: #c0c0d8; transition: color 0.3s ease; }
-        nav#main-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-color); transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+        .logo-container { display: flex; align-items: center; gap: 0.75rem; /* Replaced space-x-3 */ }
+        .logo-container img { width: 36px; height: 36px; object-fit: contain; }
+        .logo-container span { font-weight: 600; font-size: 1.25rem; /* Added font-size */ }
+        nav#main-nav { display: flex; gap: 3rem; }
+        nav#main-nav a {
+            display: block; padding: 10px 0; position: relative; text-decoration: none;
+            color: #c0c0d8; transition: color 0.3s ease; font-size: 1.125rem; /* Ensure consistent font size */
+        }
+        nav#main-nav a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background: var(--accent-color); transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
         nav#main-nav a:hover, nav#main-nav a.active-link { color: white; }
         nav#main-nav a:hover::after, nav#main-nav a.active-link::after { width: 100%; }
         nav a.active-link { font-weight: 600; color: white; }
 
         /* --- Hamburger Menu --- */
-        #hamburger-btn { display: none; flex-direction: column; justify-content: space-around; width: 28px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; }
-        .hamburger-line { display: block; width: 28px; height: 3px; background: white; border-radius: 3px; transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1); }
+        #hamburger-btn {
+            display: none; flex-direction: column; justify-content: space-around;
+            width: 28px; height: 24px; background: transparent; border: none;
+            cursor: pointer; padding: 0; z-index: 1001;
+        }
+        .hamburger-line {
+            display: block; width: 28px; height: 3px; background: white; border-radius: 3px;
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+        }
         #hamburger-btn.is-active .hamburger-line:nth-child(1) { transform: translateY(10.5px) rotate(45deg); }
         #hamburger-btn.is-active .hamburger-line:nth-child(2) { opacity: 0; transform: scale(0.1); }
         #hamburger-btn.is-active .hamburger-line:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
@@ -60,47 +85,78 @@
         /* --- Hero Section --- */
         .hero-container {
             width: 90%; margin: 60px auto 40px auto; max-w: 1200px; height: 78vh;
-            min-height: 550px; /* Sedikit dikurangi */
-            background-size: cover; background-position: center; border-radius: 35px;
-            position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            display: flex; flex-direction: column;
+            min-height: 550px; background-size: cover; background-position: center;
+            border-radius: 35px; position: relative; overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6); display: flex; flex-direction: column;
         }
-        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.1) 100%); border-radius: 35px; z-index: 1; }
-        .hero-content { flex-grow: 1; display: flex; justify-content: center; align-items: center; text-align: center; position: relative; z-index: 2; padding: 20px; }
-        .hero-content h1 { font-size: 7em; font-weight: 800; margin: 0; letter-spacing: 1.5px; text-shadow: 0px 8px 30px rgba(0,0,0,0.6); color: #fff; }
-        .hero-footer { position: absolute; bottom: 35px; right: 55px; z-index: 2; font-size: 1.05em; color: #d0d0d0; padding: 0; text-align: right; }
+        .overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.1) 100%);
+            border-radius: 35px; z-index: 1;
+        }
+        .hero-content {
+            flex-grow: 1; display: flex; justify-content: center; align-items: center;
+            text-align: center; position: relative; z-index: 2; padding: 20px;
+        }
+        .hero-content h1 {
+            font-size: 7em; font-weight: 800; margin: 0; letter-spacing: 1.5px;
+            text-shadow: 0px 8px 30px rgba(0,0,0,0.6); color: #fff;
+        }
+        .hero-footer {
+            position: absolute; bottom: 35px; right: 55px; z-index: 2;
+            font-size: 1.05em; color: #d0d0d0; padding: 0; text-align: right;
+        }
 
         /* --- Home Grid --- */
         .home-grid-section {
             background: rgba(30, 30, 40, 0.3); border-radius: 30px; padding: 45px;
             transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(3px);
-            display: flex; flex-direction: column; /* Ensure flex for alignment */
+            display: flex; flex-direction: column;
         }
-        .home-grid-section:hover { transform: translateY(-12px); box-shadow: 0 20px 45px rgba(0,0,0,0.35); border-color: rgba(220, 65, 112, 0.6); }
-        .home-grid-section img { border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; height: auto; object-fit: cover; } /* Image responsive */
+        .home-grid-section:hover {
+            transform: translateY(-12px); box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+            border-color: rgba(220, 65, 112, 0.6);
+        }
+        .home-grid-section img {
+            border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 100%; height: 100%; object-fit: cover;
+        }
         .home-grid-section h1 { line-height: 1.25; font-weight: 700; }
-        .home-grid-section p { flex-grow: 1; } /* Allow text to grow */
-        .accent-box { border-radius: 30px; padding: 40px; text-shadow: 0 3px 8px rgba(0,0,0,0.25); font-size: 2.3rem; line-height: 1.35; font-weight: 600; background: linear-gradient(110deg, #d44170 0%, #a0388a 50%, #6230a4 100%); }
+        .home-grid-section p { flex-grow: 1; }
+        .accent-box {
+            border-radius: 30px; padding: 40px; text-shadow: 0 3px 8px rgba(0,0,0,0.25);
+            font-size: 2.3rem; line-height: 1.35; font-weight: 600;
+            background: linear-gradient(110deg, #d44170 0%, #a0388a 50%, #6230a4 100%);
+        }
 
         /* --- PPDB Section --- */
-        #ppdb-section { padding: 100px 20px; background: linear-gradient(135deg, #1a0a3a 0%, #3a1a5a 40%, #5a2a7a 70%, #7a3a9a 100%); }
+        #ppdb-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1a0a3a 0%, #3a1a5a 40%, #5a2a7a 70%, #7a3a9a 100%); /* Restored background */
+        }
         #ppdb-section h1 { font-size: 3.5em; margin-bottom: 60px; font-weight: 700; text-align: center; }
         #ppdb-section .ppdb-content-box {
-            background: rgba(255, 255, 255, 0.06); padding: 60px 80px; border-radius: 30px; width: 90%; max-width: 1100px; line-height: 1.9; font-size: 1.1em;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(8px);
-            display: flex; align-items: center; gap: 60px; text-align: left;
+            background: rgba(255, 255, 255, 0.06); padding: 60px 80px; border-radius: 30px;
+            width: 90%; max-width: 1100px; line-height: 1.9; font-size: 1.1em;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px); display: flex; align-items: center; gap: 60px;
+            text-align: left; margin: 0 auto;
         }
         .ppdb-image-col { flex: 0 0 320px; }
-        .ppdb-image-col img { box-shadow: 0 15px 40px rgba(0,0,0,0.35); border-radius: 20px; width: 100%; } /* Image responsive */
+        .ppdb-image-col img { box-shadow: 0 15px 40px rgba(0,0,0,0.35); border-radius: 20px; width: 100%; }
         .ppdb-text-col { flex: 1; }
         #ppdb-section .ppdb-content-box p { margin: 0 0 35px 0; color: #d5d5e5; }
         .ppdb-button {
-            display: inline-block; padding: 15px 35px; background: white; color: #6230a4; border-radius: 50px; text-decoration: none; font-weight: 700;
+            display: inline-block; padding: 15px 35px; background: white; color: #6230a4;
+            border-radius: 50px; text-decoration: none; font-weight: 700;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
             box-shadow: 0 6px 25px rgba(0,0,0,0.15); font-size: 1em; letter-spacing: 0.5px; text-align: center;
         }
-        .ppdb-button:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 15px 40px rgba(230, 57, 132, 0.3); background: var(--accent-color); color: white; }
+        .ppdb-button:hover {
+            transform: translateY(-6px) scale(1.03); box-shadow: 0 15px 40px rgba(230, 57, 132, 0.3);
+            background: var(--accent-color); color: white;
+        }
         .button-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; }
 
         /* --- Halaman & Animasi Transisi --- */
@@ -109,109 +165,219 @@
             transform: translateY(20px);
             transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
             width: 100%; box-sizing: border-box; padding: 40px 20px;
+            min-height: 70vh; /* Ensure sections have min height */
         }
         .page-section.active {
-            display: block; opacity: 1;
-            transform: translateY(0);
+            display: block; opacity: 1; transform: translateY(0);
         }
-        .content-section { min-height: 60vh; padding: 80px 20px; text-align: center; } /* Added for others-section */
         .select-none { user-select: none; }
 
         /* === CSS PENGURUS === */
-        .pengurus-container { background-color: rgba(15, 12, 40, 0.6); backdrop-filter: blur(5px); border-radius: 30px; padding: 30px 50px; width: 90%; max-width: 1200px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); margin: 0 auto 50px auto; }
         #pengurus-section { padding: 40px 0; }
-        .image-box-common { flex: 1; background-color: #1a143f; border-radius: 25px; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 250px; position: relative; cursor: pointer; transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .pengurus-container {
+            background-color: rgba(15, 12, 40, 0.6); backdrop-filter: blur(5px);
+            border-radius: 30px; padding: 30px 50px; width: 90%; max-width: 1200px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 auto 50px auto;
+        }
+        .image-box-common {
+            flex: 1; background-color: #1a143f; border-radius: 25px; overflow: hidden;
+            display: flex; justify-content: center; align-items: center; min-height: 250px;
+            position: relative; cursor: pointer; transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
         .image-box-common:hover { transform: scale(1.03); }
-        .image-box-common img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, filter 0.5s ease; }
-        .image-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(10, 8, 37, 0.9); color: #ffffff; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 25px; box-sizing: border-box; opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease, backdrop-filter 0.5s ease; border-radius: 25px; text-align: center; backdrop-filter: blur(0px); }
-        .image-overlay h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.4em; font-weight: 600; transform: translateY(10px); transition: transform 0.5s ease 0.1s; }
-        .image-overlay p { margin: 0; font-size: 0.95em; line-height: 1.5; color: #d0d0d0; transform: translateY(10px); transition: transform 0.5s ease 0.2s; }
-        .image-box-common:hover .image-overlay, .image-box-common:focus .image-overlay { opacity: 1; visibility: visible; backdrop-filter: blur(5px); }
+        .image-box-common img { width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.5s ease, filter 0.5s ease; }
+        .image-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(10, 8, 37, 0.9); color: #ffffff; display: flex;
+            flex-direction: column; justify-content: center; align-items: center;
+            padding: 25px; box-sizing: border-box; opacity: 0; visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease, backdrop-filter 0.5s ease;
+            border-radius: 25px; text-align: center; backdrop-filter: blur(0px);
+        }
+        .image-overlay h3 {
+            margin-top: 0; margin-bottom: 10px; font-size: 1.4em; font-weight: 600;
+            transform: translateY(10px); transition: transform 0.5s ease 0.1s;
+        }
+        .image-overlay p {
+            margin: 0; font-size: 0.95em; line-height: 1.5; color: #d0d0d0;
+            transform: translateY(10px); transition: transform 0.5s ease 0.2s;
+        }
+        .image-box-common:hover .image-overlay, .image-box-common:focus .image-overlay {
+            opacity: 1; visibility: visible; backdrop-filter: blur(5px);
+        }
         .image-box-common:hover .image-overlay h3, .image-box-common:hover .image-overlay p { transform: translateY(0); }
         .image-box-common:hover img { transform: scale(1.15); filter: brightness(0.3); }
         .image-box-common:focus { outline: 2px solid var(--accent-color); }
-        hr.separator { border: 0; height: 1px; background: rgba(255, 255, 255, 0.15); width: 90%; max-width: 1200px; margin: 20px auto 70px auto; }
+        hr.separator {
+            border: 0; height: 1px; background: rgba(255, 255, 255, 0.15);
+            width: 90%; max-width: 1200px; margin: 20px auto 70px auto;
+        }
         #pengurus-section #section1 main { display: flex; gap: 40px; min-height: 550px; }
-        #pengurus-section #section1 .left-panel, #pengurus-section #section1 .right-panel { flex: 1; display: flex; flex-direction: column; }
+        #pengurus-section #section1 .left-panel, #pengurus-section #section1 .right-panel {
+            flex: 1; display: flex; flex-direction: column;
+        }
         #pengurus-section #section1 .left-panel { justify-content: space-between; }
-        #pengurus-section #section1 .right-panel img { transition: none; } /* No transition on Pimpinan img */
-        #pengurus-section #section1 .right-panel:hover img { transform: none; filter: none;} /* No hover effect on Pimpinan img */
-        #pengurus-section #section1 .pimpinan-box { background-color: rgba(40, 40, 60, 0.5); border-radius: 25px; padding: 35px 40px; display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }
-        #pengurus-section #section1 .pimpinan-box h2 { font-size: 3.5em; margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: 2px; }
+        #pengurus-section #section1 .right-panel img { transition: none; }
+        #pengurus-section #section1 .right-panel:hover img { transform: none; filter: none; }
+        #pengurus-section #section1 .pimpinan-box {
+            background-color: rgba(40, 40, 60, 0.5); border-radius: 25px; padding: 35px 40px;
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        #pengurus-section #section1 .pimpinan-box h2 {
+            font-size: 3.5em; margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: 2px;
+        }
         #pengurus-section #section1 .pimpinan-box p { font-size: 1.5em; margin: 10px 0 0; color: #c0c0d8; }
-        #pengurus-section #section1 .pimpinan-box .asterisk { font-size: 10em; color: var(--accent-color); line-height: 0.8; font-weight: bold; margin-left: 20px; opacity: 0.8; }
-        #pengurus-section #section1 .text-box { background-image: linear-gradient(to right, #b300d9, #e0003f, #f06a45); border-radius: 25px; padding: 35px 40px; font-size: 1.1em; line-height: 1.6; flex-grow: 1; display: flex; align-items: center; }
+        #pengurus-section #section1 .pimpinan-box .asterisk {
+            font-size: 10em; color: var(--accent-color); line-height: 0.8; font-weight: bold;
+            margin-left: 20px; opacity: 0.8;
+        }
+        #pengurus-section #section1 .text-box {
+            background-image: linear-gradient(to right, #b300d9, #e0003f, #f06a45);
+            border-radius: 25px; padding: 35px 40px; font-size: 1.1em; line-height: 1.6;
+            flex-grow: 1; display: flex; align-items: center;
+        }
         #pengurus-section #section2 { background: none; border: none; box-shadow: none; padding: 0; }
         #pengurus-section .row { display: flex; gap: 40px; margin-bottom: 40px; }
         #pengurus-section .row:last-child { margin-bottom: 0; }
 
-        /* --- Footer --- */
-        footer { padding: 50px 0; margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; color: #888; }
+        /* --- Lainnya Section (NEW & FIXED) --- */
+        #others-section {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; padding: 80px 20px;
+            text-align: center; /* Center h1 */
+        }
+        #others-section h1 {
+            font-size: 3.5em; margin-bottom: 60px; font-weight: 700;
+        }
+        .lainnya-content {
+            display: flex; gap: 30px; width: 100%; max-width: 1000px;
+            flex-wrap: wrap; justify-content: center; margin-bottom: 50px;
+        }
+        .card-lainnya {
+            background-color: rgba(0, 0, 0, 0.3); border-radius: 20px;
+            padding: 30px 40px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .card-quote-lainnya {
+            flex: 1; min-width: 300px; text-align: center; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+        }
+        .card-quote-lainnya .asterisk { font-size: 100px; font-weight: bold; line-height: 1; margin-bottom: 20px; }
+        .card-quote-lainnya .quote { font-size: 28px; font-weight: 600; line-height: 1.4; }
+        .card-unggulan-lainnya {
+            flex: 1.5; min-width: 350px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b, #8a2387); padding: 40px;
+        }
+        .card-unggulan-lainnya h2 {
+            font-size: 36px; font-weight: 700; margin-top: 0; margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .card-unggulan-lainnya p { font-size: 16px; line-height: 1.7; color: #f0f0f0; }
+        .card-unggulan-lainnya p b { color: white; font-weight: 600; }
+        .info-button-lainnya { text-align: center; }
+        .info-button-lainnya a {
+            display: inline-block; background-color: #1a1a3a; color: white;
+            padding: 15px 40px; border-radius: 30px; text-decoration: none;
+            font-size: 18px; font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .info-button-lainnya a:hover { background-color: #2a2a5a; transform: translateY(-2px); }
+        #others-section .email-info { /* Added style for email info */
+             margin-top: 40px;
+             font-size: 1.1em;
+             color: #b0b0c0;
+        }
 
-        /* --- Responsive (OPTIMIZED) --- */
+        /* --- Footer --- */
+        footer {
+            padding: 50px 0; margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center; color: #888;
+        }
+
+        /* --- Responsive (OPTIMIZED & FIXED) --- */
         @media (max-width: 992px) {
             .hero-content h1 { font-size: 5.5em; }
-            #ppdb-section .ppdb-content-box { padding: 40px 50px; gap: 30px; flex-direction: column; text-align: center; }
+            #ppdb-section .ppdb-content-box {
+                padding: 40px 50px; gap: 30px; flex-direction: column; text-align: center;
+            }
             .ppdb-image-col { flex: none; width: 60%; max-width: 300px; margin: 0 auto; }
             .ppdb-text-col { text-align: center; }
             #ppdb-section .ppdb-content-box p { text-align: center; }
             #pengurus-section #section1 main { flex-direction: column; }
-            #pengurus-section .row { flex-direction: column; gap: 30px; } /* Reduced gap */
+            #pengurus-section .row { flex-direction: column; gap: 30px; }
             .pengurus-container { padding: 25px 35px; }
             .home-grid-section { padding: 40px; }
+            .lainnya-content { flex-direction: column; align-items: stretch; } /* Stack & Stretch */
         }
 
         @media (max-width: 767px) {
+            body { padding-top: 70px; } /* Adjust padding for smaller header */
             .header-container { padding: 10px 15px; }
             .page-section { padding: 30px 15px; }
             .hero-container { min-height: 60vh; }
             .hero-content h1 { font-size: 3.8em; }
             .hero-footer { text-align: center; width: 100%; right: 0; bottom: 20px; font-size: 0.9em; }
             #hamburger-btn { display: flex; }
-            nav#main-nav { display: none; flex-direction: column; width: 100%; background-color: rgba(8, 4, 21, 0.95); position: absolute; top: 100%; left: 0; text-align: center; padding: 10px 0; backdrop-filter: blur(12px); border-top: 1px solid rgba(255, 255, 255, 0.1); gap: 0; }
+            nav#main-nav {
+                display: none; flex-direction: column; width: 100%;
+                background-color: rgba(8, 4, 21, 0.95); position: absolute;
+                top: 100%; left: 0; text-align: center; padding: 10px 0;
+                backdrop-filter: blur(12px); border-top: 1px solid rgba(255, 255, 255, 0.1); gap: 0;
+            }
             nav#main-nav.is-open { display: flex; }
             nav#main-nav a { padding: 16px 0; font-size: 1.2em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
             nav#main-nav a:last-child { border-bottom: none; }
-            #ppdb-section h1 { font-size: 2.5em; margin-bottom: 40px; }
+            #ppdb-section h1, #others-section h1 { font-size: 2.5em; margin-bottom: 40px; }
             #ppdb-section .ppdb-content-box { padding: 40px 25px; }
             .ppdb-image-col { width: 70%; }
             #ppdb-section .ppdb-content-box p { font-size: 1em; }
             .home-grid-section { padding: 35px 30px; }
             .home-grid-section h1 { font-size: 2.5rem; }
             .accent-box { font-size: 1.75rem; padding: 35px; }
-            #pengurus-section #section1 .pimpinan-box { flex-direction: column; align-items: center; text-align: center; padding: 30px; }
+            #pengurus-section #section1 .pimpinan-box {
+                flex-direction: column; align-items: center; text-align: center; padding: 30px;
+            }
             #pengurus-section #section1 .pimpinan-box .asterisk { margin-left: 0; font-size: 7em; }
             #pengurus-section #section1 .pimpinan-box h2 { font-size: 2.8em; }
             #pengurus-section #section1 .pimpinan-box p { font-size: 1.3em; }
             .pengurus-container { padding: 25px 20px; }
             .button-container { flex-direction: column; align-items: center; gap: 15px; }
             .ppdb-button { width: 90%; max-width: 320px; padding: 15px 20px; }
+            .card-quote-lainnya .quote { font-size: 24px; }
+            .card-unggulan-lainnya h2 { font-size: 30px; }
         }
 
         @media (max-width: 480px) {
              .hero-content h1 { font-size: 3.0em; }
-             #ppdb-section h1 { font-size: 2.1em; } /* Fixed [cite:123] */
+             #ppdb-section h1, #others-section h1 { font-size: 2.1em; }
              #ppdb-section .ppdb-content-box { padding: 30px 20px; }
              #ppdb-section .ppdb-content-box p { font-size: 0.9em; }
-             .home-grid-section { padding: 30px 20px; } /* Reduced padding */
-             .home-grid-section h1 { font-size: 2.1rem; } /* Further reduced */
-             .accent-box { font-size: 1.4rem; padding: 30px; } /* Further reduced */
+             .home-grid-section { padding: 30px 20px; }
+             .home-grid-section h1 { font-size: 2.1rem; }
+             .accent-box { font-size: 1.4rem; padding: 30px; }
              #pengurus-section #section1 .pimpinan-box h2 { font-size: 2.3em; }
              #pengurus-section #section1 .pimpinan-box p { font-size: 1.1em; }
-             .image-overlay h3 { font-size: 1.1em; } /* Adjusted */
-             .image-overlay p { font-size: 0.8em; } /* Adjusted */
-             .page-section { padding: 30px 10px; } /* Reduced padding for very small screens */
+             .image-overlay h3 { font-size: 1.1em; }
+             .image-overlay p { font-size: 0.8em; }
+             .page-section { padding: 30px 10px; }
              .pengurus-container { padding: 20px 15px; }
         }
     </style>
 </head>
 <body class="min-h-screen">
 
-    <header>
-        <div class="header-container">
+    <header id="page-header"> <div class="header-container">
             <div class="logo-container">
-                <img alt="Nurul Iman Logo" class="w-9 h-9" height="36" src="https://ik.imagekit.io/rgqle2so1/logo_nuri-removebg-preview.png?updatedAt=1747979813308" width="36"/>
-                <span class="font-bold text-xl select-none">Nurul Iman</span>
+                <img alt="Nurul Iman Logo" src="https://ik.imagekit.io/rgqle2so1/logo_nuri-removebg-preview.png?updatedAt=1747979813308"/>
+                <span class="select-none">Nurul Iman</span>
             </div>
             <button id="hamburger-btn">
                 <span class="hamburger-line"></span>
@@ -222,7 +388,7 @@
                 <a class="nav-link" href="#" data-section="home">Home</a>
                 <a class="nav-link" href="#" data-section="ppdb">PPDB</a>
                 <a class="nav-link" href="#" data-section="pengurus">PENGURUS</a>
-                <a class="nav-link" href="#" data-section="others">Others</a>
+                <a class="nav-link" href="#" data-section="others">Lainnya</a>
             </nav>
         </div>
     </header>
@@ -239,14 +405,14 @@
                 </footer>
             </div>
             <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 my-16">
-                <section class="home-grid-section bg-gradient-to-tr from-[#2f2f37] via-[#3a3a44] to-[#2f2f37] flex flex-col justify-center">
-                    <h1 class="font-extrabold text-5xl leading-tight mb-6 select-none">Sejarah<br/>Nurul Iman</h1>
+                <section class="home-grid-section flex flex-col justify-center">
+                    <h1 class="text-5xl mb-6 select-none">Sejarah<br/>Nurul Iman</h1>
                     <p class="text-lg leading-relaxed max-w-xl text-gray-300">
                         Pondok Pesantren Nurul Iman berdiri sejak tahun 1973, di atas tanah wakaf seluas +900m2 dari K.H. Moh Hasanudin (sekaligus sebagai pendiri Pondok Pesantren). Dari awal berdiri sampai dengan sekarang, Ponpes Nurul Iman senantiasa memberikan pengetahuan ilmu keagamaan kepada santrinya. Setelah pendiri Ponpes Nurul Iman wafat, selanjutnya pimpinan Pondok Pesantren diserahkan kepada menantunya yang bernama K.H. Muhammad Toha (Buya). Pada tahun 2016 sampai dengan sekarang. Kebanyakan dari santri tersebut tidak hanya mengenyam pendidikan dari pesantren saja, melainkan mereka juga sambil mengenyam pendidikan di Sekolah atau Madrasah Reguler. Sehingga mereka disini belajar untuk mengatur waktu dengan tepat.
                     </p>
                 </section>
                 <section class="flex flex-col space-y-10">
-                    <img alt="Kegiatan Nurul Iman" class="object-cover w-full h-72 md:h-full home-grid-section" height="300" src="https://ik.imagekit.io/rgqle2so1/DSC01091.JPG?updatedAt=1747982655337" width="600"/>
+                    <img alt="Kegiatan Nurul Iman" class="object-cover w-full h-72 md:h-full home-grid-section" src="https://ik.imagekit.io/rgqle2so1/DSC01091.JPG?updatedAt=1747982655337"/>
                    <div class="accent-box home-grid-section p-8 font-normal leading-snug select-none">
                        Membangun Generasi Islami & Modern
                     </div>
@@ -255,15 +421,14 @@
         </div>
 
         <div id="ppdb-section" class="page-section">
-             <h1>Info PPDB Nurul Iman Cisalak</h1>
+            <h1>Info PPDB Nurul Iman Cisalak</h1>
             <div class="ppdb-content-box">
                 <div class="ppdb-image-col">
                     <img src="https://ik.imagekit.io/rgqle2so1/1.jpg?updatedAt=1748004393184" alt="PPDB Nurul Iman Image">
                 </div>
                 <div class="ppdb-text-col">
-                     <p>
-                        Silakan pilih jalur pendaftaran yang sesuai untuk calon santri baru Pondok Pesantren Nurul Iman.
-                        Pastikan Anda mengisi formulir dengan benar.
+                    <p>
+                        Silakan pilih jalur pendaftaran yang sesuai untuk calon santri baru Pondok Pesantren Nurul Iman. Pastikan Anda mengisi formulir dengan benar.
                     </p>
                     <div class="button-container">
                         <a href="https://docs.google.com/forms/d/15exUy0YLsFVbKmz6xixEXL5WII41Agq7AGfGcL0eoOQ/edit?usp=drive_web&ouid=107543482056113933033" class="ppdb-button" target="_blank" rel="noopener noreferrer">CALON SANTRI PUTRA</a>
@@ -276,11 +441,11 @@
         <div id="pengurus-section" class="page-section">
             <div class="pengurus-container" id="section1">
                 <main>
-                    <section class="left-panel">
+                     <section class="left-panel">
                         <div class="pimpinan-box">
                             <div class="text-content">
                                 <h2>PIMPINAN</h2>
-                                 <p>Drs.KH. Muhamad Toha, M.M.Pd </p>
+                                <p>Drs.KH. Muhamad Toha, M.M.Pd </p>
                             </div>
                             <span class="asterisk">*</span>
                          </div>
@@ -293,15 +458,15 @@
                     </section>
                 </main>
             </div>
-             <hr class="separator">
+            <hr class="separator">
             <div class="pengurus-container" id="section2">
                 <div class="row">
                     <div class="image-box-common" tabindex="0">
                         <img src="https://ik.imagekit.io/rgqle2so1/20240602091935__MG_9232.JPG?updatedAt=1748000023256" alt="A Olin Rizky Zazuli">
-                         <div class="image-overlay">
+                        <div class="image-overlay">
                             <h3>Ust. Olin Rizky Zazuli</h3>
                             <p>Bidang Pendidikan & Organisasi Santri.</p>
-                         </div>
+                        </div>
                     </div>
                     <div class="image-box-common" tabindex="0">
                         <img src="https://ik.imagekit.io/rgqle2so1/Black%20Modern%20Gradient%20Programmer%20Presentation%20(4).jpg?updatedAt=1748002807642" alt="A Asep Iskandar">
@@ -309,34 +474,51 @@
                              <h3>Ust. Asep Iskandar</h3>
                             <p>Bidang Administrasi & Keuangan.</p>
                         </div>
-                     </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="image-box-common" tabindex="0">
                         <img src="https://ik.imagekit.io/rgqle2so1/Black%20Modern%20Gradient%20Programmer%20Presentation%20(3).jpg?updatedAt=1748002365202" alt="A Sandi Iswara">
                          <div class="image-overlay">
-                            <h3>Ust. Sandi Iswara</h3>
+                             <h3>Ust. Sandi Iswara</h3>
                             <p>Bidang Ketertiban & Koperasi.</p>
                          </div>
-                     </div>
+                    </div>
                     <div class="image-box-common" tabindex="0">
                         <img src="https://ik.imagekit.io/rgqle2so1/WhatsApp%20Image%202025-05-23%20at%2021.16.23.jpeg?updatedAt=1748009844534" alt="A Sofyan Hidayat">
                          <div class="image-overlay">
                              <h3>Ust. Sofyan Hidayat</h3>
                             <p>Bidang Administrasi & Pendidikan.</p>
                         </div>
-                     </div>
+                    </div>
                  </div>
-            </div>
+             </div>
         </div>
 
-        <div id="others-section" class="page-section content-section">
-            <h1>Halaman Lainnya</h1>
-            <p class="text-xl text-gray-400 mt-4">Punya keluhan website seperti bug/crash? silahkan kirim lewat g-mail: aziarsyirazeim@gmail.com Ya!.</p>
-         </div>
+        <div id="others-section" class="page-section">
+            <h1>Lainnya</h1>
+            <div class="lainnya-content">
+                <div class="card-lainnya card-quote-lainnya">
+                    <div class="asterisk">*</div>
+                    <p class="quote">“jangan pernah menyerah dalam menuntut ilmu”</p>
+                </div>
+                <div class="card-lainnya card-unggulan-lainnya">
+                    <h2>Unggulan Nurul Iman</h2>
+                    <p>
+                        Pondok Pesantren Nurul Iman mencetak generasi Qur'a. Selain itu, ada juga lulusan-lulusan lainnya seperti <b>Penguasaan Nahwu & Shorof (Metode Tabulas)</b>, <b>Peribadahan Akidah seperti Ahlussunnah Wal Jama'ah</b>, <b>Wajib Tahfidz minimal zuz 30 (dengan Tahsin dan Tajwid)</b>, <b>Kutubus Salaf</b>, <b>Marawis & Hadroh</b>, <b>Pencak Silat</b>, dan <b>Pelatihan Komputer</b>.
+                    </p>
+                </div>
+            </div>
+             <div class="info-button-lainnya">
+                <a href="#">Ketuk disini untuk melihat info-info Nurul Iman lainnya!</a>
+            </div>
+            <p class="email-info">
+                Punya keluhan website seperti bug/crash? Silahkan kirim lewat g-mail: aziarsyirazeim@gmail.com Ya!.
+            </p>
+        </div>
     </div>
-    <footer class="text-center text-gray-500">
-        &copy; 2025 Nurul Iman & Arsyir Azeim. All rights reserved.
+
+    <footer> &copy; 2025 Nurul Iman & Arsyir Azeim. All rights reserved.
     </footer>
 
     <script>
@@ -345,35 +527,49 @@
             const sections = document.querySelectorAll('.page-section');
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const mainNav = document.getElementById('main-nav');
-            const header = document.querySelector('header');
+            const header = document.getElementById('page-header'); // Use ID
 
-            function showSection(sectionId) {
+            const transitionDuration = 600; // Match CSS transition duration
+
+            function showSection(sectionIdToShow) {
                 sections.forEach(section => {
-                    const isTarget = section.id === sectionId + '-section';
+                    const currentSectionId = section.id;
+                    const isTarget = currentSectionId === sectionIdToShow + '-section';
 
                     if (isTarget) {
-                        section.classList.remove('active'); // Hapus dulu untuk reset
-                        section.style.display = 'block';
-                        setTimeout(() => {
-                            section.classList.add('active');
-                        }, 20); // Jeda kecil untuk render
+                        // Show the target section
+                        if (!section.classList.contains('active')) {
+                            section.style.display = 'block';
+                            // Use requestAnimationFrame or small timeout to ensure 'display' applies before transition
+                            requestAnimationFrame(() => {
+                                 section.classList.add('active');
+                            });
+                        }
                     } else {
-                        section.classList.remove('active');
-                        setTimeout(() => {
-                            if (!section.classList.contains('active')) {
-                                section.style.display = 'none';
-                            }
-                        }, 610); // Durasi transisi + buffer
+                        // Hide other sections
+                        if (section.classList.contains('active')) {
+                            section.classList.remove('active');
+                            // Set display to none *after* the transition ends
+                            setTimeout(() => {
+                                // Double check it wasn't re-activated
+                                if (!section.classList.contains('active')) {
+                                    section.style.display = 'none';
+                                }
+                            }, transitionDuration);
+                        } else {
+                             // Ensure it's hidden if not active (initial state & quick clicks)
+                            section.style.display = 'none';
+                        }
                     }
                 });
+
+                // Update active link in navigation
                 navLinks.forEach(link => {
-                    link.classList.remove('active-link');
-                    if (link.dataset.section === sectionId) {
-                       link.classList.add('active-link');
-                    }
+                    link.classList.toggle('active-link', link.dataset.section === sectionIdToShow);
                 });
-                 // Scroll to top when changing sections (optional but good for UX)
-                 window.scrollTo(0, 0);
+
+                // Scroll to top (optional, good for UX)
+                window.scrollTo(0, 0);
             }
 
             function closeMobileMenu() {
@@ -381,20 +577,26 @@
                 mainNav.classList.remove('is-open');
             }
 
+            // Hamburger menu toggle
             hamburgerBtn.addEventListener('click', () => {
                 hamburgerBtn.classList.toggle('is-active');
                 mainNav.classList.toggle('is-open');
             });
+
+            // Navigation link clicks
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
                     const sectionId = event.target.dataset.section;
                     showSection(sectionId);
-                    if (window.innerWidth < 768 && mainNav.classList.contains('is-open')) {
+                    // Close mobile menu on link click if it's open
+                    if (window.innerWidth <= 767 && mainNav.classList.contains('is-open')) {
                         closeMobileMenu();
                     }
                 });
             });
+
+            // Header scroll effect
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 30) {
                     header.classList.add('scrolled');
@@ -402,6 +604,8 @@
                     header.classList.remove('scrolled');
                 }
             }, { passive: true });
+
+            // Show the initial section (Home)
             showSection('home');
         });
     </script>
