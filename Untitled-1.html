@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>Nurul Iman - Website Gabungan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #00001a; /* Fallback/Base background */
+        }
+
+        /* --- Gaya Hero & Overlay --- */
+        .hero-container {
+            width: 90%; margin: 40px auto; max-width: 1200px; height: 75vh;
+            min-height: 550px; background-image: url('https://ik.imagekit.io/rgqle2so1/WhatsApp%20Image%202025-05-23%20at%2010.31.15.jpeg?updatedAt=1747971588711');
+            background-size: cover; background-position: center; border-radius: 25px;
+            position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            display: flex; flex-direction: column; color: white;
+        }
+        .overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.55); border-radius: 25px; z-index: 1;
+        }
+        .hero-content {
+            flex-grow: 1; display: flex; justify-content: center; align-items: center;
+            text-align: center; position: relative; z-index: 2; padding: 20px;
+        }
+        .hero-content h1 { font-size: 6em; font-weight: 700; margin: 0; letter-spacing: 1.5px; text-shadow: 0px 0px 15px rgba(0,0,0,0.3); }
+        .hero-footer { padding: 20px 40px; text-align: right; position: relative; z-index: 2; font-size: 0.9em; color: #e0e0e0; }
+
+        /* --- Gaya Section PPDB --- */
+        #ppdb-section {
+            min-height: 80vh; background: linear-gradient(135deg, #6230a4 0%, #a0388a 40%, #d44170 70%, #f06a45 100%);
+            color: white; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 60px 20px; text-align: center; transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; transform-origin: center;
+        }
+        #ppdb-section h1 { font-size: 3em; font-weight: 700; line-height: 1.3; margin-bottom: 30px; }
+        
+        #ppdb-section .ppdb-content-box {
+            background: rgba(0, 0, 0, 0.12); padding: 45px 65px; /* Disesuaikan padding */
+            border-radius: 20px; width: 90%; max-width: 950px; /* Lebar max disesuaikan */
+            line-height: 1.9; font-size: 1.1em; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08); text-align: center;
+            display: flex; /* Menggunakan flex untuk layout dalam */
+            justify-content: center; align-items: center;
+        }
+
+        /* MODIFIKASI: Container Flex untuk Teks & Gambar */
+        .ppdb-flex-container {
+            display: flex;
+            align-items: center; /* Menyelaraskan item secara vertikal */
+            gap: 40px; /* Jarak antara gambar dan teks */
+            width: 100%;
+            text-align: left; /* Teks dibuat rata kiri agar lebih rapi di samping gambar */
+        }
+
+        /* MODIFIKASI: Kolom Gambar */
+        .ppdb-image-col {
+            flex: 0 0 300px; /* Lebar tetap untuk gambar, tidak menyusut/bertambah */
+        }
+        .ppdb-image-col img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px; /* Agar gambar tidak terlalu kaku */
+            display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+        }
+
+        /* MODIFIKASI: Kolom Teks */
+        .ppdb-text-col {
+            flex: 1; /* Teks mengambil sisa ruang */
+        }
+        #ppdb-section .ppdb-content-box p {
+            margin: 0; /* Hapus margin default p */
+        }
+
+        /* --- Gaya Konten Lain --- */
+        .content-section { min-height: 70vh; padding: 40px 20px; text-align: center; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; transform-origin: center; }
+        .content-section h1 { font-size: 3em; font-weight: 700; }
+
+        /* --- Gaya Umum & Animasi --- */
+        .page-section { display: none; opacity: 0; transform: translateY(20px); }
+        .page-section.active { display: block; animation: fadeIn 0.6s forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        nav a.active-link { font-weight: bold; text-decoration: underline; color: white; }
+        header { background-color: rgba(10, 5, 26, 0.8); backdrop-filter: blur(5px); position: sticky; top: 0; z-index: 30; width: 100%; }
+        body { background: #0a051a; }
+
+        /* --- Gaya Responsif --- */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 4.5em; }
+            #ppdb-section .ppdb-content-box { max-width: 800px; padding: 40px 50px; }
+            .ppdb-flex-container { gap: 30px; }
+            .ppdb-image-col { flex: 0 0 250px; }
+        }
+        @media (max-width: 768px) {
+            .hero-container { height: auto; min-height: 60vh; border-radius: 20px; width: 95%; }
+            .hero-content h1 { font-size: 3.5em; }
+            .hero-footer { text-align: center; padding: 20px; }
+            header nav { flex-direction: column; align-items: center; gap: 10px; width: 100%; }
+            header { flex-direction: column; gap: 15px; padding: 15px 6px; }
+            #ppdb-section h1 { font-size: 2.5em; }
+            #ppdb-section .ppdb-content-box { padding: 30px 35px; }
+
+            /* MODIFIKASI: Stack gambar dan teks di layar kecil */
+            .ppdb-flex-container {
+                flex-direction: column; /* Ubah ke tumpukan vertikal */
+                text-align: center; /* Pusatkan teks lagi */
+                gap: 25px;
+            }
+            .ppdb-image-col {
+                flex: none; /* Hapus aturan flex */
+                width: 70%; /* Lebar gambar disesuaikan */
+                max-width: 300px; /* Batasi lebar max */
+                margin-bottom: 20px; /* Jarak bawah */
+            }
+             .ppdb-text-col {
+                text-align: center; /* Pastikan teks tetap tengah */
+            }
+        }
+        @media (max-width: 480px) {
+             .hero-content h1 { font-size: 2.8em; }
+             #ppdb-section h1 { font-size: 2em; }
+             #ppdb-section .ppdb-content-box { padding: 25px 20px; font-size: 1em; }
+             .ppdb-image-col { width: 80%; }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+
+    <header class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto flex-wrap">
+        <div class="flex items-center space-x-3">
+            <img alt="Nurul Iman Logo" class="w-8 h-8" height="32" src="https://ik.imagekit.io/rgqle2so1/logo_nuri-removebg-preview.png?updatedAt=1747979813308" width="32"/>
+            <span class="font-bold text-lg select-none">Nurul Iman</span>
+        </div>
+        <nav class="flex space-x-4 md:space-x-12 text-lg">
+           <a class="nav-link hover:underline" href="#" data-section="home">Home</a>
+            <a class="nav-link hover:underline" href="#" data-section="ppdb">PPDB</a>
+            <a class="nav-link hover:underline" href="#" data-section="content">Content</a>
+            <a class="nav-link hover:underline" href="#" data-section="others">Others</a>
+        </nav>
+    </header>
+
+    <div id="main-content">
+
+        <div id="home-section" class="page-section">
+            <div class="hero-container">
+               <div class="overlay"></div>
+                <main class="hero-content">
+                    <h1>Nurul Iman</h1>
+                </main>
+                <footer class="hero-footer">
+                   <p>@Nurulimanofficiall</p>
+                </footer>
+            </div>
+            <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
+                <section class="bg-gradient-to-tr from-[#2f2f37] via-[#3a3a44] to-[#2f2f37] rounded-3xl p-10 flex flex-col justify-center">
+                   <h1 class="font-extrabold text-5xl leading-tight mb-6 select-none">Sejarah<br/>Nurul Iman</h1>
+                    <p class="text-lg leading-relaxed max-w-xl">
+                        Nurul Iman is the process of creating instructions that a computer follows to perform specific tasks.
+                        By writing code, programmers build applications, automate processes, and develop software that powers everything from websites to smartphones.
+                    </p>
+                </section>
+                <section class="flex flex-col space-y-8">
+                    <img alt="Man wearing glasses and a beanie working on a laptop" class="rounded-3xl object-cover w-full h-72 md:h-full" height="300" src="https://ik.imagekit.io/rgqle2so1/DSC01091.JPG?updatedAt=1747982655337" width="600"/>
+                   <div class="bg-gradient-to-r from-[#d40000] via-[#e0003f] to-[#b300d9] rounded-3xl p-8 text-4xl font-normal leading-snug select-none">
+                        Defining the Craft of Coding
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <div id="ppdb-section" class="page-section">
+            <h1>Info PPDB Nurul Iman Cisalak</h1>
+            <div class="ppdb-content-box"> <div class="ppdb-flex-container">
+                    <div class="ppdb-image-col">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Programming Concept Image">
+                    </div>
+                    <div class="ppdb-text-col">
+                        <p>
+                            At the core of programming are concepts like variables, loops, functions, and
+                            conditional statements. These elements form the logic that drives a program, allowing
+                            it to make decisions, process data, and perform tasks. Mastering these basics is
+                            essential for programmers to create reliable and efficient code.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-section" class="page-section content-section">
+            <h1>Halaman Konten (Segera Hadir)</h1>
+        </div>
+
+        <div id="others-section" class="page-section content-section">
+            <h1>Halaman Lainnya (Segera Hadir)</h1>
+         </div>
+
+    </div>
+    <footer class="text-center text-gray-500 py-6 mt-10">
+        &copy; 2025 Nurul Iman & Arsyir Azeim. All rights reserved.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.page-section');
+            const mainContent = document.getElementById('main-content');
+
+            function showSection(sectionId) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    section.style.display = 'none';
+                });
+
+                const activeSection = document.getElementById(sectionId + '-section');
+                if (activeSection) {
+                    activeSection.style.display = 'block'; 
+                    setTimeout(() => {
+                         activeSection.classList.add('active');
+                    }, 10);
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.dataset.section === sectionId) {
+                       link.classList.add('active-link');
+                    }
+                });
+
+                document.body.style.background = '#0a051a'; // Selalu background gelap
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                   const sectionId = event.target.dataset.section;
+                    showSection(sectionId);
+                });
+            });
+            showSection('home');
+        });
+    </script>
+
+</body>
+</html>
