@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>Nurul Iman - Website Gabungan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        /* --- Base & Scrollbar --- */
+        :root { --accent-color: #d44170; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "Poppins", sans-serif; background-color: #0a051a;
+            color: white; line-height: 1.7; overflow-x: hidden;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a051a; }
+        ::-webkit-scrollbar-thumb { background: #3a3a44; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* --- Header & Navigasi --- */
+        header {
+            background-color: rgba(10, 5, 26, 0.7); backdrop-filter: blur(8px);
+            position: sticky; top: 0; z-index: 1000; width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.0);
+            padding: 5px 0; transition: background-color 0.4s ease, border-bottom 0.4s ease, padding 0.4s ease;
+        }
+        header.scrolled {
+            background-color: rgba(10, 5, 26, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .header-container {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 24px; max-w-7xl; margin: auto; transition: padding 0.4s ease;
+        }
+        header.scrolled .header-container { padding: 8px 24px; }
+        .logo-container { display: flex; align-items: center; space-x: 3; }
+        nav#main-nav { display: flex; gap: 3rem; text-lg; }
+        nav#main-nav a { display: block; padding: 10px 0; position: relative; text-decoration: none; color: #e0e0e0; transition: color 0.3s ease; }
+        nav#main-nav a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--accent-color); transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        nav#main-nav a:hover, nav#main-nav a.active-link { color: white; }
+        nav#main-nav a:hover::after, nav#main-nav a.active-link::after { width: 100%; }
+        nav a.active-link { font-weight: 500; text-decoration: none; }
+
+        /* --- Hamburger Menu --- */
+        #hamburger-btn { display: none; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; }
+        .hamburger-line { display: block; width: 30px; height: 3px; background: white; border-radius: 3px; transition: all 0.3s linear; }
+        #hamburger-btn.is-active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        #hamburger-btn.is-active .hamburger-line:nth-child(2) { opacity: 0; }
+        #hamburger-btn.is-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        /* --- Hero Section --- */
+        .hero-container {
+            width: 90%; margin: 60px auto 40px auto; max-width: 1200px; height: 75vh;
+            min-height: 550px; background-image: url('https://ik.imagekit.io/rgqle2so1/WhatsApp%20Image%202025-05-23%20at%2010.31.15.jpeg?updatedAt=1747971588711');
+            background-size: cover; background-position: center; border-radius: 30px;
+            position: relative; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; /* Tetap flex column */
+        }
+        .overlay { /* ... */ z-index: 1; }
+        .hero-content {
+            flex-grow: 1; /* Biarkan ini mengisi ruang */
+            display: flex; justify-content: center; align-items: center; /* Ini akan menengahkan h1 */
+            text-align: center; position: relative; z-index: 2; padding: 20px;
+        }
+        .hero-content h1 { font-size: 6.5em; font-weight: 700; margin: 0; letter-spacing: 1px; text-shadow: 0px 5px 25px rgba(0,0,0,0.5); }
+        /* MODIFIKASI: Footer diposisikan absolut */
+        .hero-footer {
+            position: absolute;
+            bottom: 30px; /* Jarak dari bawah */
+            right: 50px; /* Jarak dari kanan */
+            z-index: 2; font-size: 1em; color: #e0e0e0;
+            padding: 0; /* Hapus padding lama */
+            text-align: right; /* Pastikan teks rata kanan */
+        }
+
+
+        /* --- Home Grid --- */
+        .home-grid-section { background: rgba(40, 40, 50, 0.4); border-radius: 30px; padding: 45px; transition: transform 0.4s ease, box-shadow 0.4s ease; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .home-grid-section:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+        .home-grid-section img { border-radius: 25px; }
+        .home-grid-section h1 { line-height: 1.2; }
+        .accent-box { border-radius: 30px; padding: 40px; text-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 2.25rem; line-height: 1.3; }
+
+        /* --- PPDB Section --- */
+        #ppdb-section { padding: 100px 20px; }
+        #ppdb-section h1 { font-size: 3.5em; margin-bottom: 50px; }
+        #ppdb-section .ppdb-content-box { background: rgba(255, 255, 255, 0.08); padding: 60px 80px; border-radius: 30px; width: 90%; max-width: 1100px; line-height: 1.9; font-size: 1.1em; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 60px; text-align: left; }
+        .ppdb-image-col { flex: 0 0 320px; }
+        .ppdb-image-col img { box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-radius: 20px; }
+        .ppdb-text-col { flex: 1; }
+        #ppdb-section .ppdb-content-box p { margin: 0 0 30px 0; }
+        .ppdb-button { display: inline-block; padding: 14px 40px; background: white; color: #6230a4; border-radius: 50px; text-decoration: none; font-weight: 700; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 5px 20px rgba(0,0,0,0.1); font-size: 1.05em; letter-spacing: 0.5px; }
+        .ppdb-button:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3); color: #d44170; }
+
+        /* --- Konten Lain --- */
+        .content-section { min-height: 60vh; padding: 80px 20px; }
+
+        /* --- Halaman & Animasi Transisi --- */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(40px); /* Mulai lebih bawah */
+            /* MODIFIKASI: Animasi lebih halus & lama */
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1),
+                        transform 1.0s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .page-section.active { display: block; opacity: 1; transform: translateY(0); }
+        .select-none { user-select: none; }
+        footer { padding: 40px 0; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.05); }
+
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 5em; }
+            #ppdb-section .ppdb-content-box { padding: 40px 50px; gap: 30px; flex-direction: column; text-align: center; }
+            .ppdb-image-col { flex: none; width: 60%; max-width: 300px; margin: 0 auto; }
+            .ppdb-text-col { text-align: center; }
+            #ppdb-section .ppdb-content-box p { text-align: left; }
+            .accent-box { font-size: 2rem; }
+            nav#main-nav { gap: 2rem; }
+            .hero-footer { right: 30px; bottom: 20px; font-size: 0.9em; } /* Footer di 992px */
+        }
+
+        @media (max-width: 767px) {
+            .hero-container { height: auto; min-height: 60vh; }
+            .hero-content h1 { font-size: 3.8em; }
+            .header-container { padding: 15px 20px; }
+            #hamburger-btn { display: flex; }
+            nav#main-nav { display: none; flex-direction: column; width: 100%; background-color: rgba(10, 5, 26, 0.97); position: absolute; top: 100%; left: 0; text-align: center; padding: 15px 0; backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.1); gap: 0; }
+            nav#main-nav.is-open { display: flex; }
+            nav#main-nav a { padding: 18px 0; font-size: 1.25em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+            nav#main-nav a:last-child { border-bottom: none; }
+            #ppdb-section h1 { font-size: 2.5em; }
+            #ppdb-section .ppdb-content-box { padding: 40px 30px; }
+            .ppdb-image-col { width: 80%; }
+            #ppdb-section .ppdb-content-box p { text-align: center; margin-bottom: 30px; font-size: 1em; }
+            .home-grid-section { padding: 30px; }
+            .accent-box { font-size: 1.875rem; }
+            .hero-footer { /* Footer di mobile */
+                text-align: center; width: 100%;
+                right: 0; bottom: 15px; font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+             .hero-content h1 { font-size: 3em; }
+             #ppdb-section h1 { font-size: 2.2em; }
+             #ppdb-section .ppdb-content-box { padding: 30px 25px; }
+             #ppdb-section .ppdb-content-box p { font-size: 0.95em; }
+             .home-grid-section h1 { font-size: 2.8em; }
+             .accent-box { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img alt="Nurul Iman Logo" class="w-8 h-8" height="32" src="https://ik.imagekit.io/rgqle2so1/logo_nuri-removebg-preview.png?updatedAt=1747979813308" width="32"/>
+                <span class="font-bold text-lg select-none">Nurul Iman</span>
+            </div>
+            <button id="hamburger-btn">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <nav id="main-nav">
+                <a class="nav-link" href="#" data-section="home">Home</a>
+                <a class="nav-link" href="#" data-section="ppdb">PPDB</a>
+                <a class="nav-link" href="#" data-section="content">Content</a>
+                <a class="nav-link" href="#" data-section="others">Others</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="main-content">
+
+        <div id="home-section" class="page-section">
+            <div class="hero-container">
+               <div class="overlay"></div>
+                <main class="hero-content">
+                    <h1>Nurul Iman</h1>
+                </main>
+                <footer class="hero-footer">
+                   <p>@Nurulimanofficiall</p>
+                </footer>
+            </div>
+            <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 my-16">
+                <section class="home-grid-section bg-gradient-to-tr from-[#2f2f37] via-[#3a3a44] to-[#2f2f37] flex flex-col justify-center">
+                   <h1 class="font-extrabold text-5xl leading-tight mb-6 select-none">Sejarah<br/>Nurul Iman</h1>
+                    <p class="text-lg leading-relaxed max-w-xl text-gray-300">
+                        Nurul Iman is the process of creating instructions that a computer follows to perform specific tasks.
+                        By writing code, programmers build applications, automate processes, and develop software that powers everything from websites to smartphones.
+                    </p>
+                </section>
+                <section class="flex flex-col space-y-10">
+                    <img alt="Kegiatan Nurul Iman" class="object-cover w-full h-72 md:h-full" height="300" src="https://ik.imagekit.io/rgqle2so1/DSC01091.JPG?updatedAt=1747982655337" width="600"/>
+                   <div class="accent-box home-grid-section bg-gradient-to-r from-[#d40000] via-[#e0003f] to-[#b300d9] p-8 font-normal leading-snug select-none">
+                        Membangun Generasi Islami & Modern
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <div id="ppdb-section" class="page-section">
+            <h1>Info PPDB Nurul Iman Cisalak</h1>
+            <div class="ppdb-content-box">
+                <div class="ppdb-image-col">
+                    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Programming Concept Image">
+                </div>
+                <div class="ppdb-text-col">
+                    <p>
+                        At the core of programming are concepts like variables, loops, functions, and
+                        conditional statements. These elements form the logic that drives a program, allowing
+                        it to make decisions, process data, and perform tasks. Mastering these basics is
+                        essential for programmers to create reliable and efficient code.
+                    </p>
+                    <a href="#" class="ppdb-button">Daftar Sekarang!</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-section" class="page-section content-section">
+            <h1>Halaman Konten (Segera Hadir)</h1>
+        </div>
+
+        <div id="others-section" class="page-section content-section">
+            <h1>Halaman Lainnya (Segera Hadir)</h1>
+         </div>
+
+    </div>
+    <footer class="text-center text-gray-500">
+        &copy; 2025 Nurul Iman & Arsyir Azeim. All rights reserved.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.page-section');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mainNav = document.getElementById('main-nav');
+            const header = document.querySelector('header');
+
+            function showSection(sectionId) {
+                sections.forEach(section => {
+                    if (section.id === sectionId + '-section') {
+                        section.style.display = 'block';
+                        void section.offsetWidth; // Force reflow
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                        // Sembunyikan setelah transisi (1000ms = 1s, sesuai CSS)
+                        setTimeout(() => {
+                           if (!section.classList.contains('active')) {
+                               section.style.display = 'none';
+                           }
+                        }, 1000); // MODIFIKASI: Disesuaikan dengan durasi transisi CSS
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.dataset.section === sectionId) {
+                       link.classList.add('active-link');
+                    }
+                });
+            }
+
+            function closeMobileMenu() {
+                hamburgerBtn.classList.remove('is-active');
+                mainNav.classList.remove('is-open');
+            }
+
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('is-active');
+                mainNav.classList.toggle('is-open');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                   const sectionId = event.target.dataset.section;
+                    showSection(sectionId);
+                    if (window.innerWidth < 768) closeMobileMenu();
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, { passive: true });
+
+            // Panggil showSection('home') di akhir untuk memastikan state awal benar
+             showSection('home');
+        });
+    </script>
+
+</body>
+</html>
