@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <title>Nurul Iman - Website Gabungan Modern (Fixed)</title> <script src="https://cdn.tailwindcss.com"></script>
+    <title>Nurul Iman - Website Optimal (Fixed v2)</title> <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <style>
@@ -11,10 +11,12 @@
         :root { --accent-color: #e63984; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: "Poppins", sans-serif;
+            font-family: "Poppins", sans-serif; /* Pastikan font ini diterapkan */
             background-color: #080415;
             color: #e0e0e0; line-height: 1.7; overflow-x: hidden;
             padding-top: 15px;
+            -webkit-font-smoothing: antialiased; /* Perhalus font di Webkit */
+            -moz-osx-font-smoothing: grayscale; /* Perhalus font di Firefox */
         }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #080415; }
@@ -39,6 +41,7 @@
         }
         header.scrolled .header-container { padding: 8px 24px; }
         .logo-container { display: flex; align-items: center; space-x-3; }
+        .logo-container img { width: 36px; height: 36px; object-fit: contain; } /* Pastikan logo terlihat */
         .logo-container span { font-weight: 600; }
         nav#main-nav { display: flex; gap: 3rem; text-lg; }
         nav#main-nav a { display: block; padding: 10px 0; position: relative; text-decoration: none; color: #c0c0d8; transition: color 0.3s ease; }
@@ -57,7 +60,7 @@
         /* --- Hero Section --- */
         .hero-container {
             width: 90%; margin: 60px auto 40px auto; max-w: 1200px; height: 78vh;
-            min-height: 580px; background-image: url('https://ik.imagekit.io/rgqle2so1/WhatsApp%20Image%202025-05-23%20at%2010.31.15.jpeg?updatedAt=1747971588711');
+            min-height: 550px; /* Sedikit dikurangi */
             background-size: cover; background-position: center; border-radius: 35px;
             position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             display: flex; flex-direction: column;
@@ -72,22 +75,24 @@
             background: rgba(30, 30, 40, 0.3); border-radius: 30px; padding: 45px;
             transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(3px);
+            display: flex; flex-direction: column; /* Ensure flex for alignment */
         }
         .home-grid-section:hover { transform: translateY(-12px); box-shadow: 0 20px 45px rgba(0,0,0,0.35); border-color: rgba(220, 65, 112, 0.6); }
-        .home-grid-section img { border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .home-grid-section img { border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; height: auto; object-fit: cover; } /* Image responsive */
         .home-grid-section h1 { line-height: 1.25; font-weight: 700; }
+        .home-grid-section p { flex-grow: 1; } /* Allow text to grow */
         .accent-box { border-radius: 30px; padding: 40px; text-shadow: 0 3px 8px rgba(0,0,0,0.25); font-size: 2.3rem; line-height: 1.35; font-weight: 600; background: linear-gradient(110deg, #d44170 0%, #a0388a 50%, #6230a4 100%); }
 
         /* --- PPDB Section --- */
         #ppdb-section { padding: 100px 20px; background: linear-gradient(135deg, #1a0a3a 0%, #3a1a5a 40%, #5a2a7a 70%, #7a3a9a 100%); }
-        #ppdb-section h1 { font-size: 3.5em; margin-bottom: 60px; font-weight: 700; }
+        #ppdb-section h1 { font-size: 3.5em; margin-bottom: 60px; font-weight: 700; text-align: center; }
         #ppdb-section .ppdb-content-box {
             background: rgba(255, 255, 255, 0.06); padding: 60px 80px; border-radius: 30px; width: 90%; max-width: 1100px; line-height: 1.9; font-size: 1.1em;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(8px);
             display: flex; align-items: center; gap: 60px; text-align: left;
         }
         .ppdb-image-col { flex: 0 0 320px; }
-        .ppdb-image-col img { box-shadow: 0 15px 40px rgba(0,0,0,0.35); border-radius: 20px; }
+        .ppdb-image-col img { box-shadow: 0 15px 40px rgba(0,0,0,0.35); border-radius: 20px; width: 100%; } /* Image responsive */
         .ppdb-text-col { flex: 1; }
         #ppdb-section .ppdb-content-box p { margin: 0 0 35px 0; color: #d5d5e5; }
         .ppdb-button {
@@ -98,71 +103,105 @@
         .ppdb-button:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 15px 40px rgba(230, 57, 132, 0.3); background: var(--accent-color); color: white; }
         .button-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; }
 
-        /* --- Halaman & Animasi Transisi (MODIFIED) --- */
+        /* --- Halaman & Animasi Transisi --- */
         .page-section {
-            display: none; /* Mulai dengan display none [cite: 67] */
-            opacity: 0;
+            display: none; opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; /* Transisi 0.6 detik [cite: 68] */
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
             width: 100%; box-sizing: border-box; padding: 40px 20px;
         }
         .page-section.active {
-            display: block; /* Tampilkan saat aktif [cite: 69] */
-            opacity: 1;
-            transform: translateY(0); /* Kembali ke posisi semula [cite: 69] */
+            display: block; opacity: 1;
+            transform: translateY(0);
         }
+        .content-section { min-height: 60vh; padding: 80px 20px; text-align: center; } /* Added for others-section */
+        .select-none { user-select: none; }
 
         /* === CSS PENGURUS === */
-        .pengurus-container { background-color: rgba(15, 12, 40, 0.6); backdrop-filter: blur(5px); border-radius: 30px; padding: 30px 50px; width: 90%; max-width: 1200px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); margin: 0 auto 50px auto; } /* [cite: 72, 73, 74] */
-        #pengurus-section { padding: 40px 0; } /* [cite: 75] */
-        .image-box-common { flex: 1; background-color: #1a143f; border-radius: 25px; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 250px; position: relative; cursor: pointer; transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); } /* [cite: 76, 77] */
+        .pengurus-container { background-color: rgba(15, 12, 40, 0.6); backdrop-filter: blur(5px); border-radius: 30px; padding: 30px 50px; width: 90%; max-width: 1200px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); margin: 0 auto 50px auto; }
+        #pengurus-section { padding: 40px 0; }
+        .image-box-common { flex: 1; background-color: #1a143f; border-radius: 25px; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 250px; position: relative; cursor: pointer; transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .image-box-common:hover { transform: scale(1.03); }
-        .image-box-common img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, filter 0.5s ease; } /* [cite: 78] */
-        .image-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(10, 8, 37, 0.9); color: #ffffff; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 25px; box-sizing: border-box; opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease, backdrop-filter 0.5s ease; border-radius: 25px; text-align: center; backdrop-filter: blur(0px); } /* [cite: 79, 80, 81] */
-        .image-overlay h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.4em; font-weight: 600; transform: translateY(10px); transition: transform 0.5s ease 0.1s; } /* [cite: 82] */
-        .image-overlay p { margin: 0; font-size: 0.95em; line-height: 1.5; color: #d0d0e0; transform: translateY(10px); transition: transform 0.5s ease 0.2s; } /* [cite: 83] */
-        .image-box-common:hover .image-overlay, .image-box-common:focus .image-overlay { opacity: 1; visibility: visible; backdrop-filter: blur(5px); } /* [cite: 84] */
+        .image-box-common img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, filter 0.5s ease; }
+        .image-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(10, 8, 37, 0.9); color: #ffffff; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 25px; box-sizing: border-box; opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease, backdrop-filter 0.5s ease; border-radius: 25px; text-align: center; backdrop-filter: blur(0px); }
+        .image-overlay h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.4em; font-weight: 600; transform: translateY(10px); transition: transform 0.5s ease 0.1s; }
+        .image-overlay p { margin: 0; font-size: 0.95em; line-height: 1.5; color: #d0d0d0; transform: translateY(10px); transition: transform 0.5s ease 0.2s; }
+        .image-box-common:hover .image-overlay, .image-box-common:focus .image-overlay { opacity: 1; visibility: visible; backdrop-filter: blur(5px); }
         .image-box-common:hover .image-overlay h3, .image-box-common:hover .image-overlay p { transform: translateY(0); }
-        .image-box-common:hover img { transform: scale(1.15); filter: brightness(0.3); } /* [cite: 85] */
-        .image-box-common:focus { outline: 2px solid var(--accent-color); } /* [cite: 86] */
-        hr.separator { border: 0; height: 1px; background: rgba(255, 255, 255, 0.15); width: 90%; max-width: 1200px; margin: 20px auto 70px auto; } /* [cite: 87] */
-        #pengurus-section #section1 main { display: flex; gap: 40px; min-height: 550px; } /* [cite: 88] */
-        #pengurus-section #section1 .left-panel, #pengurus-section #section1 .right-panel { flex: 1; display: flex; flex-direction: column; } /* [cite: 89] */
-        #pengurus-section #section1 .left-panel { justify-content: space-between; } /* [cite: 90] */
-        #pengurus-section #section1 .pimpinan-box { background-color: rgba(40, 40, 60, 0.5); border-radius: 25px; padding: 35px 40px; display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); } /* [cite: 91] */
-        #pengurus-section #section1 .pimpinan-box h2 { font-size: 3.5em; margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: 2px; } /* [cite: 93] */
-        #pengurus-section #section1 .pimpinan-box p { font-size: 1.5em; margin: 10px 0 0; color: #c0c0d8; } /* [cite: 94] */
-        #pengurus-section #section1 .pimpinan-box .asterisk { font-size: 10em; color: var(--accent-color); line-height: 0.8; font-weight: bold; margin-left: 20px; opacity: 0.8; } /* [cite: 95] */
-        #pengurus-section #section1 .text-box { background-image: linear-gradient(to right, #b300d9, #e0003f, #f06a45); border-radius: 25px; padding: 35px 40px; font-size: 1.1em; line-height: 1.6; flex-grow: 1; display: flex; align-items: center; } /* [cite: 96, 97] */
-        #pengurus-section #section2 .row { display: flex; gap: 40px; margin-bottom: 40px; } /* [cite: 102] */
+        .image-box-common:hover img { transform: scale(1.15); filter: brightness(0.3); }
+        .image-box-common:focus { outline: 2px solid var(--accent-color); }
+        hr.separator { border: 0; height: 1px; background: rgba(255, 255, 255, 0.15); width: 90%; max-width: 1200px; margin: 20px auto 70px auto; }
+        #pengurus-section #section1 main { display: flex; gap: 40px; min-height: 550px; }
+        #pengurus-section #section1 .left-panel, #pengurus-section #section1 .right-panel { flex: 1; display: flex; flex-direction: column; }
+        #pengurus-section #section1 .left-panel { justify-content: space-between; }
+        #pengurus-section #section1 .right-panel img { transition: none; } /* No transition on Pimpinan img */
+        #pengurus-section #section1 .right-panel:hover img { transform: none; filter: none;} /* No hover effect on Pimpinan img */
+        #pengurus-section #section1 .pimpinan-box { background-color: rgba(40, 40, 60, 0.5); border-radius: 25px; padding: 35px 40px; display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        #pengurus-section #section1 .pimpinan-box h2 { font-size: 3.5em; margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: 2px; }
+        #pengurus-section #section1 .pimpinan-box p { font-size: 1.5em; margin: 10px 0 0; color: #c0c0d8; }
+        #pengurus-section #section1 .pimpinan-box .asterisk { font-size: 10em; color: var(--accent-color); line-height: 0.8; font-weight: bold; margin-left: 20px; opacity: 0.8; }
+        #pengurus-section #section1 .text-box { background-image: linear-gradient(to right, #b300d9, #e0003f, #f06a45); border-radius: 25px; padding: 35px 40px; font-size: 1.1em; line-height: 1.6; flex-grow: 1; display: flex; align-items: center; }
+        #pengurus-section #section2 { background: none; border: none; box-shadow: none; padding: 0; }
+        #pengurus-section .row { display: flex; gap: 40px; margin-bottom: 40px; }
+        #pengurus-section .row:last-child { margin-bottom: 0; }
 
         /* --- Footer --- */
-        footer { padding: 50px 0; margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; color: #888; } /* [cite: 71] */
+        footer { padding: 50px 0; margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; color: #888; }
 
-        /* --- Responsive --- */
+        /* --- Responsive (OPTIMIZED) --- */
         @media (max-width: 992px) {
-            .hero-content h1 { font-size: 5.5em; } /* [cite: 104] */
-            #ppdb-section .ppdb-content-box { padding: 40px 50px; gap: 30px; flex-direction: column; text-align: center; } /* [cite: 105] */
-            .ppdb-image-col { flex: none; width: 60%; max-width: 300px; margin: 0 auto; } /* [cite: 106] */
-            #pengurus-section #section1 main { flex-direction: column; } /* [cite: 112] */
-            #pengurus-section .row { flex-direction: column; } /* [cite: 113] */
+            .hero-content h1 { font-size: 5.5em; }
+            #ppdb-section .ppdb-content-box { padding: 40px 50px; gap: 30px; flex-direction: column; text-align: center; }
+            .ppdb-image-col { flex: none; width: 60%; max-width: 300px; margin: 0 auto; }
+            .ppdb-text-col { text-align: center; }
+            #ppdb-section .ppdb-content-box p { text-align: center; }
+            #pengurus-section #section1 main { flex-direction: column; }
+            #pengurus-section .row { flex-direction: column; gap: 30px; } /* Reduced gap */
+            .pengurus-container { padding: 25px 35px; }
+            .home-grid-section { padding: 40px; }
         }
 
         @media (max-width: 767px) {
-            .hero-content h1 { font-size: 4em; } /* [cite: 116] */
-            #hamburger-btn { display: flex; } /* [cite: 118] */
-            nav#main-nav { display: none; flex-direction: column; width: 100%; background-color: rgba(8, 4, 21, 0.95); position: absolute; top: 100%; left: 0; text-align: center; padding: 15px 0; backdrop-filter: blur(12px); border-top: 1px solid rgba(255, 255, 255, 0.1); gap: 0; } /* [cite: 119, 120] */
-            nav#main-nav.is-open { display: flex; } /* [cite: 121] */
-            #ppdb-section h1 { font-size: 2.8em; } /* [cite: 124] */
-            #pengurus-section #section1 .pimpinan-box { flex-direction: column; align-items: center; text-align: center; } /* [cite: 131] */
-            .button-container { flex-direction: column; align-items: center; gap: 15px; } /* [cite: 135] */
+            .header-container { padding: 10px 15px; }
+            .page-section { padding: 30px 15px; }
+            .hero-container { min-height: 60vh; }
+            .hero-content h1 { font-size: 3.8em; }
+            .hero-footer { text-align: center; width: 100%; right: 0; bottom: 20px; font-size: 0.9em; }
+            #hamburger-btn { display: flex; }
+            nav#main-nav { display: none; flex-direction: column; width: 100%; background-color: rgba(8, 4, 21, 0.95); position: absolute; top: 100%; left: 0; text-align: center; padding: 10px 0; backdrop-filter: blur(12px); border-top: 1px solid rgba(255, 255, 255, 0.1); gap: 0; }
+            nav#main-nav.is-open { display: flex; }
+            nav#main-nav a { padding: 16px 0; font-size: 1.2em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+            nav#main-nav a:last-child { border-bottom: none; }
+            #ppdb-section h1 { font-size: 2.5em; margin-bottom: 40px; }
+            #ppdb-section .ppdb-content-box { padding: 40px 25px; }
+            .ppdb-image-col { width: 70%; }
+            #ppdb-section .ppdb-content-box p { font-size: 1em; }
+            .home-grid-section { padding: 35px 30px; }
+            .home-grid-section h1 { font-size: 2.5rem; }
+            .accent-box { font-size: 1.75rem; padding: 35px; }
+            #pengurus-section #section1 .pimpinan-box { flex-direction: column; align-items: center; text-align: center; padding: 30px; }
+            #pengurus-section #section1 .pimpinan-box .asterisk { margin-left: 0; font-size: 7em; }
+            #pengurus-section #section1 .pimpinan-box h2 { font-size: 2.8em; }
+            #pengurus-section #section1 .pimpinan-box p { font-size: 1.3em; }
+            .pengurus-container { padding: 25px 20px; }
+            .button-container { flex-direction: column; align-items: center; gap: 15px; }
+            .ppdb-button { width: 90%; max-width: 320px; padding: 15px 20px; }
         }
 
         @media (max-width: 480px) {
-             .hero-content h1 { font-size: 3.2em; } /* [cite: 137] */
-             #ppdb-section h1 { font-size: 2.3em; } /* [cite: 138] */
-             .image-overlay h3 { font-size: 1.2em; } /* [cite: 145] */
-             .image-overlay p { font-size: 0.85em; } /* [cite: 146] */
+             .hero-content h1 { font-size: 3.0em; }
+             #ppdb-section h1 { font-size: 2.1em; } /* Fixed [cite:123] */
+             #ppdb-section .ppdb-content-box { padding: 30px 20px; }
+             #ppdb-section .ppdb-content-box p { font-size: 0.9em; }
+             .home-grid-section { padding: 30px 20px; } /* Reduced padding */
+             .home-grid-section h1 { font-size: 2.1rem; } /* Further reduced */
+             .accent-box { font-size: 1.4rem; padding: 30px; } /* Further reduced */
+             #pengurus-section #section1 .pimpinan-box h2 { font-size: 2.3em; }
+             #pengurus-section #section1 .pimpinan-box p { font-size: 1.1em; }
+             .image-overlay h3 { font-size: 1.1em; } /* Adjusted */
+             .image-overlay p { font-size: 0.8em; } /* Adjusted */
+             .page-section { padding: 30px 10px; } /* Reduced padding for very small screens */
+             .pengurus-container { padding: 20px 15px; }
         }
     </style>
 </head>
@@ -190,7 +229,7 @@
 
     <div id="main-content">
         <div id="home-section" class="page-section">
-            <div class="hero-container">
+            <div class="hero-container" style="background-image: url('https://ik.imagekit.io/rgqle2so1/WhatsApp%20Image%202025-05-23%20at%2010.31.15.jpeg?updatedAt=1747971588711');">
                <div class="overlay"></div>
                 <main class="hero-content">
                     <h1>Nurul Iman</h1>
@@ -203,7 +242,7 @@
                 <section class="home-grid-section bg-gradient-to-tr from-[#2f2f37] via-[#3a3a44] to-[#2f2f37] flex flex-col justify-center">
                     <h1 class="font-extrabold text-5xl leading-tight mb-6 select-none">Sejarah<br/>Nurul Iman</h1>
                     <p class="text-lg leading-relaxed max-w-xl text-gray-300">
-                        Pondok Pesantren Nurul Iman berdiri sejak tahun 1973, di atas tanah wakaf seluas +900m2 dari K.H. Moh Hasanudin (sekaligus sebagai pendiri Pondok Pesantren). Dari awal berdiri sampai dengan sekarang, Ponpes Nurul Iman senantiasa memberikan pengetahuan ilmu keagamaan kepada santrinya. Setelah pendiri Ponpes Nurul Iman wafat, selanjutnya pimpinan Pondok Pesantren diserahkan kepada menantunya yang bernama K.H. Muhammad Toha (Buya). Pada tahun 2016 sampai dengan sekarang. Kebanyakan dari santri tersebut tidak hanya mengenyam pendidikan dari pesantren saja, melainkan mereka juga sambil mengenyam pendidikan di Sekolah atau Madrasah Reguler. Sehingga mereka disini belajar untuk mengatur waktu dengan tepat. 
+                        Pondok Pesantren Nurul Iman berdiri sejak tahun 1973, di atas tanah wakaf seluas +900m2 dari K.H. Moh Hasanudin (sekaligus sebagai pendiri Pondok Pesantren). Dari awal berdiri sampai dengan sekarang, Ponpes Nurul Iman senantiasa memberikan pengetahuan ilmu keagamaan kepada santrinya. Setelah pendiri Ponpes Nurul Iman wafat, selanjutnya pimpinan Pondok Pesantren diserahkan kepada menantunya yang bernama K.H. Muhammad Toha (Buya). Pada tahun 2016 sampai dengan sekarang. Kebanyakan dari santri tersebut tidak hanya mengenyam pendidikan dari pesantren saja, melainkan mereka juga sambil mengenyam pendidikan di Sekolah atau Madrasah Reguler. Sehingga mereka disini belajar untuk mengatur waktu dengan tepat.
                     </p>
                 </section>
                 <section class="flex flex-col space-y-10">
@@ -216,19 +255,19 @@
         </div>
 
         <div id="ppdb-section" class="page-section">
-            <h1>Info PPDB Nurul Iman Cisalak</h1>
+             <h1>Info PPDB Nurul Iman Cisalak</h1>
             <div class="ppdb-content-box">
                 <div class="ppdb-image-col">
-                    <img src="https://ik.imagekit.io/rgqle2so1/1.jpg?updatedAt=1748004393184" alt="Programming Concept Image">
+                    <img src="https://ik.imagekit.io/rgqle2so1/1.jpg?updatedAt=1748004393184" alt="PPDB Nurul Iman Image">
                 </div>
                 <div class="ppdb-text-col">
-                    <p>
+                     <p>
                         Silakan pilih jalur pendaftaran yang sesuai untuk calon santri baru Pondok Pesantren Nurul Iman.
                         Pastikan Anda mengisi formulir dengan benar.
                     </p>
                     <div class="button-container">
-                        <a href="https://docs.google.com/forms/d/15exUy0YLsFVbKmz6xixEXL5WII41Agq7AGfGcL0eoOQ/edit?usp=drive_web&ouid=107543482056113933033" class="ppdb-button">CALON SANTRI PUTRA</a>
-                        <a href="https://docs.google.com/forms/d/1zNpguPJBrl3J7V2ObEeIbxPGmUfzzM6rG50T0uo0wig/edit" class="ppdb-button">CALON SANTRI PUTRI</a>
+                        <a href="https://docs.google.com/forms/d/15exUy0YLsFVbKmz6xixEXL5WII41Agq7AGfGcL0eoOQ/edit?usp=drive_web&ouid=107543482056113933033" class="ppdb-button" target="_blank" rel="noopener noreferrer">CALON SANTRI PUTRA</a>
+                        <a href="https://docs.google.com/forms/d/1zNpguPJBrl3J7V2ObEeIbxPGmUfzzM6rG50T0uo0wig/edit" class="ppdb-button" target="_blank" rel="noopener noreferrer">CALON SANTRI PUTRI</a>
                     </div>
                 </div>
             </div>
@@ -241,11 +280,11 @@
                         <div class="pimpinan-box">
                             <div class="text-content">
                                 <h2>PIMPINAN</h2>
-                                <p>Drs.KH. Muhamad Toha M.M.Pd </p>
+                                 <p>Drs.KH. Muhamad Toha M.M.Pd </p>
                             </div>
                             <span class="asterisk">*</span>
                          </div>
-                        <div class="text-box">
+                         <div class="text-box">
                             <p>Struktur kepengurusan Pondok Pesantren Nurul Iman dibentuk untuk memastikan jalannya program pendidikan dan kegiatan harian dengan baik.</p>
                         </div>
                     </section>
@@ -254,40 +293,40 @@
                     </section>
                 </main>
             </div>
-            <hr class="separator">
+             <hr class="separator">
             <div class="pengurus-container" id="section2">
                 <div class="row">
                     <div class="image-box-common" tabindex="0">
                         <img src="https://ik.imagekit.io/rgqle2so1/20240602091935__MG_9232.JPG?updatedAt=1748000023256" alt="A Olin Rizky Zazuli">
-                        <div class="image-overlay">
+                         <div class="image-overlay">
                             <h3>A Olin Rizky Zazuli</h3>
                             <p>Bidang Pendidikan & Organisasi Santri.</p>
                          </div>
                     </div>
                     <div class="image-box-common" tabindex="0">
-                        <img src="https://ik.imagekit.io/rgqle2so1/Black%20Modern%20Gradient%20Programmer%20Presentation%20(4).jpg?updatedAt=1748002807642" alt="A Rafaelian Mubarok">
+                        <img src="https://ik.imagekit.io/rgqle2so1/Black%20Modern%20Gradient%20Programmer%20Presentation%20(4).jpg?updatedAt=1748002807642" alt="A Asep Iskandar">
                         <div class="image-overlay">
-                            <h3>A Asep Iskandar</h3>
+                             <h3>A Asep Iskandar</h3>
                             <p>Bidang Administrasi & Keuangan.</p>
                         </div>
-                    </div>
+                     </div>
                 </div>
                 <div class="row">
                     <div class="image-box-common" tabindex="0">
-                        <img src="https://ik.imagekit.io/rgqle2so1/Black%20Modern%20Gradient%20Programmer%20Presentation%20(3).jpg?updatedAt=1748002365202" alt="A Sandi Iskandar">
+                        <img src="https://ik.imagekit.io/rgqle2so1/Black%20Modern%20Gradient%20Programmer%20Presentation%20(3).jpg?updatedAt=1748002365202" alt="A Sandi Iswara">
                          <div class="image-overlay">
                             <h3>A Sandi Iswara</h3>
                             <p>Bidang Ketertiban & Koperasi.</p>
                          </div>
-                    </div>
+                     </div>
                     <div class="image-box-common" tabindex="0">
                         <img src="https://ik.imagekit.io/rgqle2so1/Black%20Modern%20Gradient%20Programmer%20Presentation%20(5).jpg?updatedAt=1748002807500" alt="A Sofyan Hidayat">
                          <div class="image-overlay">
-                            <h3>A Sofyan Hidayat</h3>
+                             <h3>A Sofyan Hidayat</h3>
                             <p>Bidang Administrasi & Pendidikan.</p>
                         </div>
                      </div>
-                </div>
+                 </div>
             </div>
         </div>
 
@@ -313,69 +352,49 @@
                     const isTarget = section.id === sectionId + '-section';
 
                     if (isTarget) {
-                        // --- Show Target Section ---
-                        // 1. Remove 'active' just in case (though unlikely needed)
-                        section.classList.remove('active');
-                        // 2. Set display to block so it can be animated
+                        section.classList.remove('active'); // Hapus dulu untuk reset
                         section.style.display = 'block';
-                        // 3. Use a tiny timeout (like 10-20ms). This gives the browser a moment
-                        //    to process `display: block` before starting the transition.
-                        //    This makes the fade-in animation much more reliable.
                         setTimeout(() => {
                             section.classList.add('active');
-                        }, 20);
+                        }, 20); // Jeda kecil untuk render
                     } else {
-                        // --- Hide Other Sections ---
-                        // 1. Remove 'active' class to start the fade-out transition.
                         section.classList.remove('active');
-                        // 2. We need to set `display: none` *after* the transition ends (600ms).
-                        //    Using 'transitionend' event is ideal but can be tricky.
-                        //    A reliable `setTimeout` slightly longer than the transition works well.
                         setTimeout(() => {
-                            // 3. Double-check it shouldn't be active before hiding.
-                            //    This prevents issues if the user clicks another link very quickly.
                             if (!section.classList.contains('active')) {
                                 section.style.display = 'none';
                             }
-                        }, 610); // 600ms transition + 10ms buffer
+                        }, 610); // Durasi transisi + buffer
                     }
                 });
-
-                // Update active link in navigation
                 navLinks.forEach(link => {
                     link.classList.remove('active-link');
                     if (link.dataset.section === sectionId) {
                        link.classList.add('active-link');
                     }
                 });
+                 // Scroll to top when changing sections (optional but good for UX)
+                 window.scrollTo(0, 0);
             }
 
-            // Function to close mobile menu
             function closeMobileMenu() {
                 hamburgerBtn.classList.remove('is-active');
                 mainNav.classList.remove('is-open');
             }
 
-            // Hamburger button click listener
             hamburgerBtn.addEventListener('click', () => {
                 hamburgerBtn.classList.toggle('is-active');
                 mainNav.classList.toggle('is-open');
             });
-
-            // Navigation link click listeners
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
                     const sectionId = event.target.dataset.section;
                     showSection(sectionId);
-                    // Close mobile menu on click if it's open
                     if (window.innerWidth < 768 && mainNav.classList.contains('is-open')) {
                         closeMobileMenu();
                     }
                 });
             });
-
-            // Header scroll effect listener
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 30) {
                     header.classList.add('scrolled');
@@ -383,8 +402,6 @@
                     header.classList.remove('scrolled');
                 }
             }, { passive: true });
-
-            // Show the home section by default when the page loads
             showSection('home');
         });
     </script>
