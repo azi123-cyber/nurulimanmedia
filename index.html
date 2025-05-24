@@ -25,7 +25,7 @@
             color: var(--light-text-color);
             line-height: 1.7;
             overflow-x: hidden;
-            padding-top: 80px; /* Increased padding to prevent overlap with sticky header */
+            padding-top: 80px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -36,19 +36,19 @@
 
         /* --- Header & Navigasi --- */
         header {
-            background-color: rgba(0, 0, 0, 0.45); /* Semi-transparent black for header */
-            backdrop-filter: blur(12px); /* Increased blur */
-            position: fixed; /* Changed to fixed for better stickiness */
+            background-color: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(12px);
+            position: fixed;
             top: 0;
-            left: 0; /* Ensure it spans full width */
+            left: 0;
             z-index: 1000;
             width: 100%;
-            border-bottom: 1px solid var(--border-color-soft); /* Softer Green Border */
+            border-bottom: 1px solid var(--border-color-soft);
             padding: 5px 0;
             transition: background-color 0.4s ease, border-bottom 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
         }
         header.scrolled {
-            background-color: rgba(0, 0, 0, 0.65); /* Darker transparent black when Scrolled */
+            background-color: rgba(0, 0, 0, 0.65);
             border-bottom: 1px solid rgba(76, 175, 80, 0.25);
             padding: 2px 0;
             box-shadow: 0 8px 30px rgba(0,0,0,0.35);
@@ -114,14 +114,13 @@
             border-radius: 35px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.7); /* Darker shadow for depth */
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
             display: flex; flex-direction: column;
         }
         .overlay {
             position: absolute;
-            top: 0; left: 0;
-            right: 0; bottom: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.15) 100%); /* Darker overlay */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.15) 100%);
             border-radius: 35px; z-index: 1;
         }
         .hero-content {
@@ -148,12 +147,12 @@
 
         /* --- Home Grid --- */
         .home-grid-section {
-            background: rgba(5, 15, 10, 0.35); /* Dark, semi-transparent green */
+            background: rgba(5, 15, 10, 0.35);
             backdrop-filter: blur(5px);
             border-radius: 30px;
             padding: 45px;
             transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-            border: 1px solid rgba(76, 175, 80, 0.18);
+            border: 1px solid var(--border-color-soft);
             display: flex; flex-direction: column;
         }
         .home-grid-section:hover {
@@ -175,16 +174,16 @@
             text-shadow: 0 3px 8px rgba(0,0,0,0.25);
             font-size: 2.3rem;
             line-height: 1.35; font-weight: 600;
-            background: linear-gradient(110deg, #388E3C 0%, var(--accent-color) 50%, #66BB6A 100%); /* Green gradient */
+            background: linear-gradient(110deg, #388E3C 0%, var(--accent-color) 50%, #66BB6A 100%);
             color: white;
         }
 
         /* --- Pelajaran Section --- */
         .pelajaran-section {
-            padding: 80px 0;
+            padding: 80px 0 60px 0; /* Adjusted padding */
             text-align: center;
         }
-        .pelajaran-section h2 {
+        .pelajaran-section h2, .persyaratan-section h2 {
             font-size: 3em;
             font-weight: 700;
             margin-bottom: 50px;
@@ -237,6 +236,62 @@
             text-align: center;
         }
 
+        /* --- Persyaratan Section (NEW) --- */
+        .persyaratan-section {
+            padding: 60px 0 80px 0; /* Added padding */
+            text-align: center;
+        }
+       .persyaratan-content {
+            background: rgba(10, 29, 18, 0.45);
+            backdrop-filter: blur(8px);
+            padding: 50px 60px;
+            border-radius: 30px;
+            width: 90%;
+            max-w-4xl; /* Adjusted max-width */
+            margin: 0 auto;
+            border: 1px solid var(--border-color-soft);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+        .persyaratan-content ol {
+            list-style: none; /* Remove default numbers */
+            padding-left: 0;
+            counter-reset: item; /* Start counter */
+        }
+        .persyaratan-content ol li {
+            color: var(--light-text-color);
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            padding-left: 55px; /* Space for custom number */
+            position: relative;
+            line-height: 1.6;
+        }
+       .persyaratan-content ol li::before {
+            content: counter(item); /* Display counter */
+            counter-increment: item; /* Increment counter */
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 35px;
+            height: 35px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .persyaratan-content ol li:last-child {
+            margin-bottom: 0;
+        }
+        .persyaratan-content ol li span {
+            color: var(--muted-text-color);
+            font-size: 0.9em;
+        }
+
 
         /* --- PPDB Section --- */
         #ppdb-section {
@@ -244,10 +299,10 @@
         }
         #ppdb-section h1 { font-size: 3.5em; margin-bottom: 60px; font-weight: 700; text-align: center; color: var(--light-text-color); }
         #ppdb-section .ppdb-content-box {
-            background: rgba(10, 29, 18, 0.45); /* Darker semi-transparent green */
+            background: rgba(10, 29, 18, 0.45);
             backdrop-filter: blur(8px);
             padding: 60px 80px; border-radius: 30px;
-            width: 90%; max-width: 1100px;
+            width: 90%; max-w: 1100px;
             line-height: 1.9; font-size: 1.1em;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             border: 1px solid var(--border-color-soft);
@@ -273,34 +328,33 @@
         }
         .ppdb-button:hover {
             transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.35); /* Adjusted shadow color */
-            background: #388E3C; /* Darker accent on hover */
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.35);
+            background: #388E3C;
             color: white;
         }
         .button-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; }
 
         /* --- Halaman & Animasi Transisi --- */
         .page-section {
-            display: none; /* Hidden by default */
-            opacity: 0; /* Start invisible */
-            transform: translateY(20px); /* Start slightly lower */
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; /* Transition effect */
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
             width: 100%; box-sizing: border-box;
-            padding: 40px 20px; /* Default padding */
+            padding: 40px 20px;
             min-height: 70vh;
         }
-        #home-section { padding: 0; } /* Remove padding for home section */
+        #home-section { padding: 0; }
         .page-section.active {
-            display: block; /* Show section */
-            opacity: 1; /* Make visible */
-            transform: translateY(0); /* Move to original position */
+            display: block;
+            opacity: 1; transform: translateY(0);
         }
         .select-none { user-select: none; }
 
         /* === CSS PENGURUS === */
         #pengurus-section { padding: 40px 0; }
         .pengurus-container {
-            background-color: rgba(5, 15, 10, 0.45); /* Darker transparent green */
+            background-color: rgba(5, 15, 10, 0.45);
             backdrop-filter: blur(6px);
             border-radius: 30px; padding: 30px 50px;
             width: 90%; max-width: 1200px;
@@ -323,9 +377,8 @@
         .image-box-common img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, filter 0.5s ease; }
         .image-overlay {
             position: absolute;
-            top: 0; left: 0;
-            right: 0; bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
             color: var(--light-text-color); display: flex;
             flex-direction: column;
             justify-content: center; align-items: center;
@@ -359,7 +412,7 @@
         hr.separator {
             border: 0;
             height: 1px;
-            background: rgba(76, 175, 80, 0.25); /* Greenish separator */
+            background: rgba(76, 175, 80, 0.25);
             width: 90%;
             max-width: 1200px; margin: 20px auto 70px auto;
         }
@@ -372,7 +425,7 @@
         #pengurus-section #section1 .right-panel.image-box-common img { transition: none; }
         #pengurus-section #section1 .right-panel.image-box-common:hover img { transform: none; filter: none; }
         #pengurus-section #section1 .pimpinan-box {
-            background-color: rgba(10, 29, 18, 0.55); /* Consistent dark transparent green */
+            background-color: rgba(10, 29, 18, 0.55);
             border-radius: 25px;
             padding: 35px 40px;
             display: flex;
@@ -394,7 +447,7 @@
             opacity: 0.8;
         }
         #pengurus-section #section1 .text-box {
-            background-image: linear-gradient(to right, #388E3C, var(--accent-color), #66BB6A); /* Green gradient */
+            background-image: linear-gradient(to right, #388E3C, var(--accent-color), #66BB6A);
             border-radius: 25px;
             padding: 35px 40px; font-size: 1.1em; line-height: 1.6;
             flex-grow: 1;
@@ -424,7 +477,7 @@
             justify-content: center; margin-bottom: 50px;
         }
         .card-lainnya {
-            background-color: rgba(5, 15, 10, 0.4); /* Dark transparent green */
+            background-color: rgba(5, 15, 10, 0.4);
             border-radius: 20px;
             padding: 30px 40px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
@@ -444,7 +497,7 @@
         .card-unggulan-lainnya {
             flex: 1.5;
             min-width: 350px;
-            background: linear-gradient(135deg, #1E4620, var(--accent-color)); /* Themed gradient */
+            background: linear-gradient(135deg, #1E4620, var(--accent-color));
             padding: 40px;
         }
         .card-unggulan-lainnya h2 {
@@ -468,7 +521,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .info-button-lainnya a:hover { background-color: #388E3C; /* Darker accent */ transform: translateY(-2px); }
+        .info-button-lainnya a:hover { background-color: #388E3C; transform: translateY(-2px); }
         #others-section .email-info {
              margin-top: 40px;
              font-size: 1.1em;
@@ -479,15 +532,15 @@
         footer {
             padding: 50px 0;
             margin-top: 80px;
-            border-top: 1px solid rgba(76,175,80,0.18); /* Themed border */
+            border-top: 1px solid rgba(76,175,80,0.18);
             text-align: center;
-            color: #81C784; /* Muted green text */
+            color: #81C784;
         }
 
         /* --- Responsive --- */
         @media (max-width: 1024px) {
             .hero-content h1 { font-size: 5.5em; }
-             .pelajaran-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+            .pelajaran-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
             #ppdb-section .ppdb-content-box { padding: 40px 50px; gap: 30px; flex-direction: column; text-align: center; }
             .ppdb-image-col { flex: none; width: 60%; max-width: 300px; margin: 0 auto; }
             .ppdb-text-col { text-align: center; }
@@ -509,23 +562,21 @@
             .hero-footer { text-align: center; width: 100%; right: 0; bottom: 20px; font-size: 0.9em; }
             #hamburger-btn { display: flex; }
             nav#main-nav {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.95); /* Darker mobile nav */
-                position: absolute;
-                top: 100%;
-                left: 0; text-align: center; padding: 10px 0;
-                backdrop-filter: blur(12px);
-                border-top: 1px solid var(--border-color-soft); gap: 0;
+                display: none; flex-direction: column; width: 100%;
+                background-color: rgba(0, 0, 0, 0.95); position: absolute;
+                top: 100%; left: 0; text-align: center; padding: 10px 0;
+                backdrop-filter: blur(12px); border-top: 1px solid var(--border-color-soft); gap: 0;
             }
             nav#main-nav.is-open { display: flex; }
             nav#main-nav a { padding: 16px 0; font-size: 1.2em; border-bottom: 1px solid rgba(76, 175, 80, 0.1); }
             nav#main-nav a:last-child { border-bottom: none; }
-            .pelajaran-section { padding: 60px 0; }
-            .pelajaran-section h2 { font-size: 2.5em; margin-bottom: 30px; }
+            .pelajaran-section, .persyaratan-section { padding: 60px 0; }
+            .pelajaran-section h2, .persyaratan-section h2 { font-size: 2.5em; margin-bottom: 30px; }
             .pelajaran-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 15px; }
             .pelajaran-card { padding: 30px 25px; min-height: auto; }
+            .persyaratan-content { padding: 40px 30px; }
+            .persyaratan-content ol li { font-size: 1em; padding-left: 50px; }
+            .persyaratan-content ol li::before { width: 30px; height: 30px; font-size: 0.8em; }
             #ppdb-section h1, #others-section h1 { font-size: 2.5em; margin-bottom: 40px; }
             #ppdb-section .ppdb-content-box { padding: 40px 25px; }
             .ppdb-image-col { width: 70%; }
@@ -547,7 +598,9 @@
         @media (max-width: 480px) {
              .hero-content h1 { font-size: 3.0em; }
              #ppdb-section h1, #others-section h1 { font-size: 2.1em; }
-             .pelajaran-section h2 { font-size: 2.1em; }
+             .pelajaran-section h2, .persyaratan-section h2 { font-size: 2.1em; }
+             .persyaratan-content { padding: 30px 20px; }
+             .persyaratan-content ol li { padding-left: 45px; }
              #ppdb-section .ppdb-content-box { padding: 30px 20px; }
              #ppdb-section .ppdb-content-box p { font-size: 0.9em; }
              .home-grid-section { padding: 30px 20px; }
@@ -636,6 +689,22 @@
                     </div>
                 </div>
             </section>
+
+            <section class="persyaratan-section">
+                <h2>Persyaratan Masuk</h2>
+                <div class="persyaratan-content">
+                    <ol>
+                        <li>Fotocopy Ijazah terakhir</li>
+                        <li>Fotocopy Kartu NISN</li>
+                        <li>Fotocopy Akta Lahir</li>
+                        <li>Fotocopy KTP Ayah & Ibu</li>
+                        <li>Fotocopy Kartu Keluarga</li>
+                        <li>Fotocopy Piagam Prestasi <span>(Apabila ada)</span></li>
+                        <li>Pas Photo 3x4 - 2 Lembar</li>
+                    </ol>
+                </div>
+            </section>
+
         </div>
 
         <div id="ppdb-section" class="page-section">
@@ -756,7 +825,6 @@
                         // Show the target section
                         if (!section.classList.contains('active')) {
                             section.style.display = 'block';
-                            // Use requestAnimationFrame to ensure 'display' applies before transition
                             requestAnimationFrame(() => {
                                 section.classList.add('active');
                             });
@@ -765,15 +833,12 @@
                         // Hide other sections
                         if (section.classList.contains('active')) {
                             section.classList.remove('active');
-                            // Set display to none *after* the transition ends
                             setTimeout(() => {
-                                 // Double check it wasn't re-activated
                                  if (!section.classList.contains('active')) {
                                     section.style.display = 'none';
                                  }
                                }, transitionDuration);
                         } else {
-                             // Ensure it's hidden if not active
                             if (section.style.display !== 'none') {
                                 section.style.display = 'none';
                             }
@@ -804,7 +869,6 @@
                     event.preventDefault();
                     const sectionId = event.target.dataset.section;
                     showSection(sectionId);
-                     // Close mobile menu on link click if it's open
                     if (window.innerWidth <= 767 && mainNav.classList.contains('is-open')) {
                         closeMobileMenu();
                      }
