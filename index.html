@@ -3,372 +3,434 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <title>Nurul Iman - Website Resmi (BY AZI)</title>
+    <title>Nurul Iman - Website Resmi (Elegant Green)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <style>
         /* --- Base & Scrollbar --- */
-        :root { --accent-color: #e63984; }
+        :root {
+            --accent-color: #4CAF50; /* Elegant Green Accent */
+            --dark-green-hue: #0A1D12; /* Dark Green for Gradient Start */
+            --almost-black: #030705; /* Very Dark, almost black for depth */
+            --light-text-color: #E0F2F1; /* Light Cyan-Tinted White for text */
+            --muted-text-color: #A5D6A7; /* Light Muted Green for secondary text */
+            --border-color-soft: rgba(76, 175, 80, 0.2); /* Soft green border */
+        }
         html { scroll-behavior: smooth; }
         body {
             font-family: "Poppins", sans-serif;
-            background-color: #080415;
-            color: #e0e0e0;
+            background: linear-gradient(180deg, var(--dark-green-hue) 0%, #000000 70%); /* Green to Black Gradient */
+            background-attachment: fixed;
+            color: var(--light-text-color);
             line-height: 1.7;
             overflow-x: hidden;
-            padding-top: 80px; /* Increased padding to prevent overlap with sticky header */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            padding-top: 80px; /* [cite: 4] Increased padding to prevent overlap with sticky header */
+            -webkit-font-smoothing: antialiased; /* [cite: 5] */
+            -moz-osx-font-smoothing: grayscale; /* [cite: 6] */
         }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #080415; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        ::-webkit-scrollbar { width: 8px; } /* Adjusted from 6px */
+        ::-webkit-scrollbar-track { background: #000000; } /* Black Track */
+        ::-webkit-scrollbar-thumb { background: #1E3A2F; border-radius: 10px; } /* Muted Green Thumb */
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
 
         /* --- Header & Navigasi --- */
         header {
-            background-color: rgba(8, 4, 21, 0.6);
-            backdrop-filter: blur(10px);
-            position: fixed; /* Changed to fixed for better stickiness */
-            top: 0; left: 0; /* Ensure it spans full width */
-            z-index: 1000; width: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 5px 0;
-            transition: background-color 0.4s ease, border-bottom 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
+            background-color: rgba(0, 0, 0, 0.45); /* Semi-transparent black for header */
+            backdrop-filter: blur(12px); /* Increased blur */
+            position: fixed; /* [cite: 11] Changed to fixed for better stickiness */
+            top: 0; /* [cite: 11] */
+            left: 0; /* [cite: 12] Ensure it spans full width */
+            z-index: 1000; /* [cite: 12] */
+            width: 100%; /* [cite: 13] */
+            border-bottom: 1px solid var(--border-color-soft); /* Softer Green Border */
+            padding: 5px 0; /* [cite: 13] */
+            transition: background-color 0.4s ease, border-bottom 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease; /* [cite: 14] */
         }
         header.scrolled {
-            background-color: rgba(8, 4, 21, 0.85);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2px 0;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            background-color: rgba(0, 0, 0, 0.65); /* Darker transparent black when Scrolled */
+            border-bottom: 1px solid rgba(76, 175, 80, 0.25); /* [cite: 16] */
+            padding: 2px 0; /* [cite: 16] */
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35); /* [cite: 17] */
         }
         .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 24px;
-            max-w-7xl; margin: auto;
-            transition: padding 0.4s ease;
+            display: flex; /* [cite: 18] */
+            align-items: center; /* [cite: 18] */
+            justify-content: space-between; /* [cite: 18] */
+            padding: 10px 24px; /* [cite: 18] */
+            max-w-7xl; margin: auto; /* [cite: 19] */
+            transition: padding 0.4s ease; /* [cite: 19] */
         }
-        header.scrolled .header-container { padding: 8px 24px; }
-        .logo-container { display: flex; align-items: center; gap: 0.75rem; /* Replaced space-x-3 */ }
-        .logo-container img { width: 36px; height: 36px; object-fit: contain; }
-        .logo-container span { font-weight: 600; font-size: 1.25rem; /* Added font-size */ }
-        nav#main-nav { display: flex; gap: 3rem; }
+        header.scrolled .header-container { padding: 8px 24px; /* [cite: 20] */ }
+        .logo-container { display: flex; align-items: center; gap: 0.75rem; /* [cite: 21] */ }
+        .logo-container img { width: 36px; height: 36px; /* [cite: 22] */ object-fit: contain; /* [cite: 22] */ }
+        .logo-container span { font-weight: 600; font-size: 1.25rem; /* [cite: 23] */ color: var(--light-text-color); }
+        nav#main-nav { display: flex; gap: 3rem; /* [cite: 24] */ }
         nav#main-nav a {
-            display: block; padding: 10px 0; position: relative; text-decoration: none;
-            color: #c0c0d8; transition: color 0.3s ease; font-size: 1.125rem; /* Ensure consistent font size */
+            display: block; /* [cite: 25] */
+            padding: 10px 0; position: relative; text-decoration: none; /* [cite: 25] */
+            color: var(--muted-text-color); transition: color 0.3s ease; font-size: 1.125rem; /* [cite: 26] */
+            font-weight: 500;
         }
         nav#main-nav a::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-            background: var(--accent-color); transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            content: ''; /* [cite: 27] */
+            position: absolute; bottom: 0; left: 0; width: 0; height: 2px; /* [cite: 27] */
+            background: var(--accent-color); transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* [cite: 28] */
         }
-        nav#main-nav a:hover, nav#main-nav a.active-link { color: white; }
-        nav#main-nav a:hover::after, nav#main-nav a.active-link::after { width: 100%; }
-        nav a.active-link { font-weight: 600; color: white; }
+        nav#main-nav a:hover, nav#main-nav a.active-link { color: white; /* [cite: 29] */ }
+        nav#main-nav a:hover::after, nav#main-nav a.active-link::after { width: 100%; /* [cite: 30] */ }
+        nav a.active-link { font-weight: 700; color: white; /* [cite: 31] */ }
 
         /* --- Hamburger Menu --- */
         #hamburger-btn {
-            display: none; flex-direction: column; justify-content: space-around;
-            width: 28px; height: 24px; background: transparent; border: none;
-            cursor: pointer; padding: 0; z-index: 1001;
+            display: none; /* [cite: 32] */
+            flex-direction: column; justify-content: space-around; /* [cite: 32] */
+            width: 28px; height: 24px; background: transparent; border: none; /* [cite: 32] */
+            cursor: pointer; padding: 0; z-index: 1001; /* [cite: 33] */
         }
         .hamburger-line {
-            display: block; width: 28px; height: 3px; background: white; border-radius: 3px;
-            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            display: block; /* [cite: 34] */
+            width: 28px; height: 3px; background: var(--light-text-color); border-radius: 3px; /* [cite: 34] */
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1); /* [cite: 35] */
         }
-        #hamburger-btn.is-active .hamburger-line:nth-child(1) { transform: translateY(10.5px) rotate(45deg); }
-        #hamburger-btn.is-active .hamburger-line:nth-child(2) { opacity: 0; transform: scale(0.1); }
-        #hamburger-btn.is-active .hamburger-line:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
+        #hamburger-btn.is-active .hamburger-line:nth-child(1) { transform: translateY(10.5px) rotate(45deg); /* [cite: 36] */ }
+        #hamburger-btn.is-active .hamburger-line:nth-child(2) { opacity: 0; transform: scale(0.1); /* [cite: 37] */ }
+        #hamburger-btn.is-active .hamburger-line:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); /* [cite: 38] */ }
 
         /* --- Hero Section --- */
         .hero-container {
-            width: 90%; margin: 60px auto 40px auto; max-w: 1200px; height: 78vh;
-            min-height: 550px; background-size: cover; background-position: center;
-            border-radius: 35px; position: relative; overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6); display: flex; flex-direction: column;
+            width: 90%; /* [cite: 39] */
+            margin: 60px auto 40px auto; max-w: 1200px; height: 78vh; /* [cite: 39] */
+            min-height: 550px; background-size: cover; background-position: center; /* [cite: 39] */
+            border-radius: 35px; position: relative; /* [cite: 39] */
+            overflow: hidden; /* [cite: 40] */
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7); /* Darker shadow for depth */ display: flex; flex-direction: column; /* [cite: 40] */
         }
         .overlay {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.1) 100%);
-            border-radius: 35px; z-index: 1;
+            position: absolute; /* [cite: 42] */
+            top: 0; left: 0; right: 0; bottom: 0; /* [cite: 42] */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.15) 100%); /* Darker overlay */
+            border-radius: 35px; z-index: 1; /* [cite: 43] */
         }
         .hero-content {
-            flex-grow: 1; display: flex; justify-content: center; align-items: center;
-            text-align: center; position: relative; z-index: 2; padding: 20px;
+            flex-grow: 1; /* [cite: 44] */
+            display: flex; justify-content: center; align-items: center; /* [cite: 44] */
+            text-align: center; position: relative; z-index: 2; padding: 20px; /* [cite: 45] */
         }
         .hero-content h1 {
-            font-size: 7em; font-weight: 800; margin: 0; letter-spacing: 1.5px;
-            text-shadow: 0px 8px 30px rgba(0,0,0,0.6); color: #fff;
+            font-size: 7em; /* [cite: 46] */
+            font-weight: 800; margin: 0; letter-spacing: 1.5px; /* [cite: 46] */
+            text-shadow: 0px 8px 30px rgba(0,0,0,0.7); color: #fff; /* [cite: 47] */
         }
         .hero-footer {
-            position: absolute; bottom: 35px; right: 55px; z-index: 2;
-            font-size: 1.05em; color: #d0d0d0; padding: 0; text-align: right;
+            position: absolute; /* [cite: 48] */
+            bottom: 35px; right: 55px; z-index: 2; /* [cite: 48] */
+            font-size: 1.05em; color: var(--muted-text-color); padding: 0; text-align: right; /* [cite: 49] */
         }
 
         /* --- Home Grid --- */
         .home-grid-section {
-            background: rgba(30, 30, 40, 0.3); border-radius: 30px; padding: 45px;
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(3px);
-            display: flex; flex-direction: column;
+            background: rgba(5, 15, 10, 0.35); /* Dark, semi-transparent green */
+            backdrop-filter: blur(5px);
+            border-radius: 30px; padding: 45px; /* [cite: 50] */
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; /* [cite: 51] */
+            border: 1px solid rgba(76, 175, 80, 0.18); /* [cite: 51] */
+            display: flex; flex-direction: column; /* [cite: 52] */
         }
         .home-grid-section:hover {
-            transform: translateY(-12px); box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-            border-color: rgba(220, 65, 112, 0.6);
+            transform: translateY(-12px); /* [cite: 53] */
+            box-shadow: 0 20px 45px rgba(0,0,0,0.4); /* [cite: 53] */
+            border-color: rgba(76, 175, 80, 0.6); /* [cite: 54] */
         }
         .home-grid-section img {
-            border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 25px; /* [cite: 55] */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25); /* [cite: 55] */
+            width: 100%; height: 100%; object-fit: cover; /* [cite: 56] */
         }
-        .home-grid-section h1 { line-height: 1.25; font-weight: 700; }
-        .home-grid-section p { flex-grow: 1; }
+        .home-grid-section h1 { line-height: 1.25; font-weight: 700; color: var(--light-text-color); /* [cite: 57] */ }
+        .home-grid-section p { flex-grow: 1; color: var(--muted-text-color); /* [cite: 58] */ }
         .accent-box {
-            border-radius: 30px; padding: 40px; text-shadow: 0 3px 8px rgba(0,0,0,0.25);
-            font-size: 2.3rem; line-height: 1.35; font-weight: 600;
-            background: linear-gradient(110deg, #d44170 0%, #a0388a 50%, #6230a4 100%);
+            border-radius: 30px; /* [cite: 59] */
+            padding: 40px; text-shadow: 0 3px 8px rgba(0,0,0,0.25); /* [cite: 59] */
+            font-size: 2.3rem; line-height: 1.35; font-weight: 600; /* [cite: 59] */
+            background: linear-gradient(110deg, #388E3C 0%, var(--accent-color) 50%, #66BB6A 100%); /* Green gradient */
+            color: white;
         }
 
         /* --- PPDB Section --- */
         #ppdb-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #1a0a3a 0%, #3a1a5a 40%, #5a2a7a 70%, #7a3a9a 100%); /* Restored background */
+            padding: 100px 20px; /* [cite: 61] */
+            /* Background removed to let body gradient show */
         }
-        #ppdb-section h1 { font-size: 3.5em; margin-bottom: 60px; font-weight: 700; text-align: center; }
+        #ppdb-section h1 { font-size: 3.5em; /* [cite: 63] */ margin-bottom: 60px; font-weight: 700; text-align: center; color: var(--light-text-color); /* [cite: 63] */ }
         #ppdb-section .ppdb-content-box {
-            background: rgba(255, 255, 255, 0.06); padding: 60px 80px; border-radius: 30px;
-            width: 90%; max-width: 1100px; line-height: 1.9; font-size: 1.1em;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(8px); display: flex; align-items: center; gap: 60px;
-            text-align: left; margin: 0 auto;
+            background: rgba(10, 29, 18, 0.45); /* Darker semi-transparent green */
+            backdrop-filter: blur(8px); /* [cite: 66] */
+            padding: 60px 80px; border-radius: 30px; /* [cite: 64] */
+            width: 90%; max-width: 1100px; line-height: 1.9; font-size: 1.1em; /* [cite: 65] */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); border: 1px solid var(--border-color-soft); /* [cite: 65] */
+            display: flex; /* [cite: 66] */
+            align-items: center; gap: 60px; /* [cite: 66] */
+            text-align: left; margin: 0 auto; /* [cite: 66] */
         }
-        .ppdb-image-col { flex: 0 0 320px; }
-        .ppdb-image-col img { box-shadow: 0 15px 40px rgba(0,0,0,0.35); border-radius: 20px; width: 100%; }
-        .ppdb-text-col { flex: 1; }
-        #ppdb-section .ppdb-content-box p { margin: 0 0 35px 0; color: #d5d5e5; }
+        .ppdb-image-col { flex: 0 0 320px; /* [cite: 67] */ }
+        .ppdb-image-col img { box-shadow: 0 15px 40px rgba(0,0,0,0.35); border-radius: 20px; width: 100%; /* [cite: 68] */ }
+        .ppdb-text-col { flex: 1; /* [cite: 69] */ }
+        #ppdb-section .ppdb-content-box p { margin: 0 0 35px 0; color: var(--muted-text-color); /* [cite: 70] */ }
         .ppdb-button {
-            display: inline-block; padding: 15px 35px; background: white; color: #6230a4;
-            border-radius: 50px; text-decoration: none; font-weight: 700;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.15); font-size: 1em; letter-spacing: 0.5px; text-align: center;
+            display: inline-block; /* [cite: 71] */
+            padding: 15px 35px; background: var(--accent-color); color: white; /* [cite: 71, 72] */
+            border-radius: 50px; text-decoration: none; font-weight: 700; /* [cite: 72] */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* [cite: 72] */
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15); font-size: 1em; /* [cite: 73] */
+            letter-spacing: 0.5px; text-align: center; /* [cite: 73] */
         }
         .ppdb-button:hover {
-            transform: translateY(-6px) scale(1.03); box-shadow: 0 15px 40px rgba(230, 57, 132, 0.3);
-            background: var(--accent-color); color: white;
+            transform: translateY(-6px) scale(1.03); /* [cite: 74] */
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.35); /* Adjusted shadow color */
+            background: #388E3C; /* Darker accent on hover */ color: white; /* [cite: 75] */
         }
-        .button-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; }
+        .button-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; /* [cite: 76] */ }
 
         /* --- Halaman & Animasi Transisi --- */
         .page-section {
-            display: none; opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-            width: 100%; box-sizing: border-box; padding: 40px 20px;
-            min-height: 70vh; /* Ensure sections have min height */
+            display: none; /* [cite: 77] */
+            opacity: 0; /* [cite: 77] */
+            transform: translateY(20px); /* [cite: 77] */
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; /* [cite: 77] */
+            width: 100%; box-sizing: border-box; padding: 40px 20px; /* [cite: 77] */
+            min-height: 70vh; /* [cite: 78] */
         }
         .page-section.active {
-            display: block; opacity: 1; transform: translateY(0);
+            display: block; /* [cite: 79] */
+            opacity: 1; transform: translateY(0); /* [cite: 79] */
         }
-        .select-none { user-select: none; }
+        .select-none { user-select: none; /* [cite: 80] */ }
 
         /* === CSS PENGURUS === */
-        #pengurus-section { padding: 40px 0; }
+        #pengurus-section { padding: 40px 0; /* [cite: 81] */ }
         .pengurus-container {
-            background-color: rgba(15, 12, 40, 0.6); backdrop-filter: blur(5px);
-            border-radius: 30px; padding: 30px 50px; width: 90%; max-width: 1200px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);
-            margin: 0 auto 50px auto;
+            background-color: rgba(5, 15, 10, 0.45); /* Darker transparent green */
+            backdrop-filter: blur(6px); /* [cite: 82] */
+            border-radius: 30px; padding: 30px 50px; width: 90%; max-width: 1200px; /* [cite: 82] */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35); /* [cite: 83] */
+            border: 1px solid var(--border-color-soft); /* [cite: 83] */
+            margin: 0 auto 50px auto; /* [cite: 84] */
         }
         .image-box-common {
-            flex: 1; background-color: #1a143f; border-radius: 25px; overflow: hidden;
-            display: flex; justify-content: center; align-items: center; min-height: 250px;
-            position: relative; cursor: pointer; transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            flex: 1; /* [cite: 85] */
+            background-color: var(--almost-black); border-radius: 25px; overflow: hidden; /* [cite: 85] */
+            display: flex; justify-content: center; align-items: center; min-height: 250px; /* [cite: 85] */
+            position: relative; cursor: pointer; /* [cite: 86] */
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* [cite: 86] */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25); /* [cite: 87] */
         }
-        .image-box-common:hover { transform: scale(1.03); }
-        .image-box-common img { width: 100%; height: 100%; object-fit: cover; display: block;
-            transition: transform 0.5s ease, filter 0.5s ease; }
+        .image-box-common:hover { transform: scale(1.03); /* [cite: 88] */ }
+        .image-box-common img { width: 100%; height: 100%; object-fit: cover; display: block; /* [cite: 89] */ transition: transform 0.5s ease, filter 0.5s ease; /* [cite: 89] */ }
         .image-overlay {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(10, 8, 37, 0.9); color: #ffffff; display: flex;
-            flex-direction: column; justify-content: center; align-items: center;
-            padding: 25px; box-sizing: border-box; opacity: 0; visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease, backdrop-filter 0.5s ease;
-            border-radius: 25px; text-align: center; backdrop-filter: blur(0px);
+            position: absolute; /* [cite: 90] */
+            top: 0; left: 0; right: 0; bottom: 0; /* [cite: 90] */
+            background-color: rgba(0, 0, 0, 0.8); color: var(--light-text-color); display: flex; /* Darker overlay */ /* [cite: 90] */
+            flex-direction: column; /* [cite: 91] */
+            justify-content: center; align-items: center; /* [cite: 91] */
+            padding: 25px; box-sizing: border-box; opacity: 0; visibility: hidden; /* [cite: 92] */
+            transition: opacity 0.5s ease, visibility 0.5s ease, backdrop-filter 0.5s ease; /* [cite: 92] */
+            border-radius: 25px; text-align: center; backdrop-filter: blur(0px); /* [cite: 93] */
         }
         .image-overlay h3 {
-            margin-top: 0; margin-bottom: 10px; font-size: 1.4em; font-weight: 600;
-            transform: translateY(10px); transition: transform 0.5s ease 0.1s;
+            margin-top: 0; /* [cite: 94] */
+            margin-bottom: 10px; font-size: 1.4em; font-weight: 600; /* [cite: 94] */
+            transform: translateY(10px); transition: transform 0.5s ease 0.1s; /* [cite: 95] */
         }
         .image-overlay p {
-            margin: 0; font-size: 0.95em; line-height: 1.5; color: #d0d0d0;
-            transform: translateY(10px); transition: transform 0.5s ease 0.2s;
+            margin: 0; /* [cite: 96] */
+            font-size: 0.95em; line-height: 1.5; color: var(--muted-text-color); /* [cite: 96] */
+            transform: translateY(10px); transition: transform 0.5s ease 0.2s; /* [cite: 97] */
         }
         .image-box-common:hover .image-overlay, .image-box-common:focus .image-overlay {
-            opacity: 1; visibility: visible; backdrop-filter: blur(5px);
+            opacity: 1; /* [cite: 98] */
+            visibility: visible; backdrop-filter: blur(5px); /* [cite: 98] */
         }
-        .image-box-common:hover .image-overlay h3, .image-box-common:hover .image-overlay p { transform: translateY(0); }
-        .image-box-common:hover img { transform: scale(1.15); filter: brightness(0.3); }
-        .image-box-common:focus { outline: 2px solid var(--accent-color); }
+        .image-box-common:hover .image-overlay h3, .image-box-common:hover .image-overlay p { transform: translateY(0); /* [cite: 99] */ }
+        .image-box-common:hover img { transform: scale(1.15); filter: brightness(0.3); /* [cite: 100] */ }
+        .image-box-common:focus { outline: 2px solid var(--accent-color); /* [cite: 101] */ }
         hr.separator {
-            border: 0; height: 1px; background: rgba(255, 255, 255, 0.15);
-            width: 90%; max-width: 1200px; margin: 20px auto 70px auto;
+            border: 0; /* [cite: 102] */
+            height: 1px; background: rgba(76, 175, 80, 0.25); /* Greenish separator */ /* [cite: 102] */
+            width: 90%; max-width: 1200px; margin: 20px auto 70px auto; /* [cite: 103] */
         }
-        #pengurus-section #section1 main { display: flex; gap: 40px; min-height: 550px; }
+        #pengurus-section #section1 main { display: flex; gap: 40px; min-height: 550px; /* [cite: 104] */ }
         #pengurus-section #section1 .left-panel, #pengurus-section #section1 .right-panel {
-            flex: 1; display: flex; flex-direction: column;
+            flex: 1; /* [cite: 105] */
+            display: flex; flex-direction: column; /* [cite: 105] */
         }
-        #pengurus-section #section1 .left-panel { justify-content: space-between; }
-        #pengurus-section #section1 .right-panel img { transition: none; }
-        #pengurus-section #section1 .right-panel:hover img { transform: none; filter: none; }
+        #pengurus-section #section1 .left-panel { justify-content: space-between; /* [cite: 106] */ }
+        /* Keep specific no-hover for pimpinan image if intended */
+        #pengurus-section #section1 .right-panel.image-box-common img { transition: none; /* [cite: 107] */ }
+        #pengurus-section #section1 .right-panel.image-box-common:hover img { transform: none; filter: none; /* [cite: 108] */ }
         #pengurus-section #section1 .pimpinan-box {
-            background-color: rgba(40, 40, 60, 0.5); border-radius: 25px; padding: 35px 40px;
-            display: flex; justify-content: space-between; align-items: flex-start;
-            margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(10, 29, 18, 0.55); /* Consistent dark transparent green */ /* [cite: 109] */
+            border-radius: 25px; padding: 35px 40px; /* [cite: 109] */
+            display: flex; justify-content: space-between; align-items: flex-start; /* [cite: 109] */
+            margin-bottom: 30px; border: 1px solid var(--border-color-soft); /* [cite: 110] */
         }
         #pengurus-section #section1 .pimpinan-box h2 {
-            font-size: 3.5em; margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: 2px;
+            font-size: 3.5em; /* [cite: 111] */
+            margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: 2px; color: var(--light-text-color); /* [cite: 111] */
         }
-        #pengurus-section #section1 .pimpinan-box p { font-size: 1.5em; margin: 10px 0 0; color: #c0c0d8; }
+        #pengurus-section #section1 .pimpinan-box p { font-size: 1.5em; /* [cite: 112] */ margin: 10px 0 0; color: var(--muted-text-color); /* [cite: 112] */ }
         #pengurus-section #section1 .pimpinan-box .asterisk {
-            font-size: 10em; color: var(--accent-color); line-height: 0.8; font-weight: bold;
-            margin-left: 20px; opacity: 0.8;
+            font-size: 10em; /* [cite: 113] */
+            color: var(--accent-color); line-height: 0.8; font-weight: bold; /* [cite: 113] */
+            margin-left: 20px; opacity: 0.8; /* [cite: 114] */
         }
         #pengurus-section #section1 .text-box {
-            background-image: linear-gradient(to right, #b300d9, #e0003f, #f06a45);
-            border-radius: 25px; padding: 35px 40px; font-size: 1.1em; line-height: 1.6;
-            flex-grow: 1; display: flex; align-items: center;
+            background-image: linear-gradient(to right, #388E3C, var(--accent-color), #66BB6A); /* Green gradient */ /* [cite: 115] */
+            border-radius: 25px; padding: 35px 40px; font-size: 1.1em; line-height: 1.6; /* [cite: 115] */
+            flex-grow: 1; display: flex; align-items: center; color: white; /* [cite: 116] */
         }
-        #pengurus-section #section2 { background: none; border: none; box-shadow: none; padding: 0; }
-        #pengurus-section .row { display: flex; gap: 40px; margin-bottom: 40px; }
-        #pengurus-section .row:last-child { margin-bottom: 0; }
+        #pengurus-section #section2 { background: none; border: none; box-shadow: none; padding: 0; /* [cite: 117] */ }
+        #pengurus-section .row { display: flex; gap: 40px; margin-bottom: 40px; /* [cite: 118] */ }
+        #pengurus-section .row:last-child { margin-bottom: 0; /* [cite: 119] */ }
 
-        /* --- Lainnya Section (NEW & FIXED) --- */
+        /* --- Lainnya Section (NEW & FIXED & THEMED) --- */
         #others-section {
-            display: flex; flex-direction: column; align-items: center;
-            justify-content: center; padding: 80px 20px;
-            text-align: center; /* Center h1 */
+            display: flex; /* [cite: 120] */
+            flex-direction: column; align-items: center; /* [cite: 120] */
+            justify-content: center; padding: 80px 20px; /* [cite: 120] */
+            text-align: center; /* [cite: 121] */
         }
         #others-section h1 {
-            font-size: 3.5em; margin-bottom: 60px; font-weight: 700;
+            font-size: 3.5em; /* [cite: 122] */
+            margin-bottom: 60px; font-weight: 700; color: var(--light-text-color); /* [cite: 122] */
         }
         .lainnya-content {
-            display: flex; gap: 30px; width: 100%; max-width: 1000px;
-            flex-wrap: wrap; justify-content: center; margin-bottom: 50px;
+            display: flex; /* [cite: 123] */
+            gap: 30px; width: 100%; max-width: 1000px; /* [cite: 123] */
+            flex-wrap: wrap; justify-content: center; margin-bottom: 50px; /* [cite: 124] */
         }
         .card-lainnya {
-            background-color: rgba(0, 0, 0, 0.3); border-radius: 20px;
-            padding: 30px 40px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
+            background-color: rgba(5, 15, 10, 0.4); /* Dark transparent green */ /* [cite: 125] */
+            border-radius: 20px; /* [cite: 125] */
+            padding: 30px 40px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* [cite: 125] */
+            backdrop-filter: blur(5px); /* [cite: 126] */
+            border: 1px solid var(--border-color-soft); /* [cite: 126] */
+            color: white; /* [cite: 126] */
         }
         .card-quote-lainnya {
-            flex: 1; min-width: 300px; text-align: center; display: flex;
-            flex-direction: column; align-items: center; justify-content: center;
+            flex: 1; /* [cite: 127] */
+            min-width: 300px; text-align: center; display: flex; /* [cite: 127] */
+            flex-direction: column; align-items: center; justify-content: center; /* [cite: 128] */
         }
-        .card-quote-lainnya .asterisk { font-size: 100px; font-weight: bold; line-height: 1; margin-bottom: 20px; }
-        .card-quote-lainnya .quote { font-size: 28px; font-weight: 600; line-height: 1.4; }
+        .card-quote-lainnya .asterisk { font-size: 100px; font-weight: bold; line-height: 1; margin-bottom: 20px; color: var(--accent-color); /* [cite: 129] */ }
+        .card-quote-lainnya .quote { font-size: 28px; font-weight: 600; line-height: 1.4; color: var(--light-text-color); /* [cite: 130] */ }
         .card-unggulan-lainnya {
-            flex: 1.5; min-width: 350px;
-            background: linear-gradient(135deg, #ff416c, #ff4b2b, #8a2387); padding: 40px;
+            flex: 1.5; /* [cite: 131] */
+            min-width: 350px; /* [cite: 131] */
+            background: linear-gradient(135deg, #1E4620, var(--accent-color)); /* Themed gradient */ padding: 40px; /* [cite: 131] */
         }
         .card-unggulan-lainnya h2 {
-            font-size: 36px; font-weight: 700; margin-top: 0; margin-bottom: 25px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 36px; /* [cite: 132] */
+            font-weight: 700; margin-top: 0; margin-bottom: 25px; /* [cite: 132] */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); color: white; /* [cite: 133] */
         }
-        .card-unggulan-lainnya p { font-size: 16px; line-height: 1.7; color: #f0f0f0; }
-        .card-unggulan-lainnya p b { color: white; font-weight: 600; }
-        .info-button-lainnya { text-align: center; }
+        .card-unggulan-lainnya p { font-size: 16px; line-height: 1.7; color: #E0F0F0; /* [cite: 134] */ }
+        .card-unggulan-lainnya p b { color: white; font-weight: 600; /* [cite: 135] */ }
+        .info-button-lainnya { text-align: center; /* [cite: 136] */ }
         .info-button-lainnya a {
-            display: inline-block; background-color: #1a1a3a; color: white;
-            padding: 15px 40px; border-radius: 30px; text-decoration: none;
-            font-size: 18px; font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-block; /* [cite: 137] */
+            background-color: var(--accent-color); color: white; /* [cite: 137] */
+            padding: 15px 40px; border-radius: 30px; text-decoration: none; /* [cite: 137] */
+            font-size: 18px; font-weight: 600; /* [cite: 138] */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* [cite: 138] */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* [cite: 139] */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* [cite: 139] */
         }
-        .info-button-lainnya a:hover { background-color: #2a2a5a; transform: translateY(-2px); }
-        #others-section .email-info { /* Added style for email info */
-             margin-top: 40px;
-             font-size: 1.1em;
-             color: #b0b0c0;
+        .info-button-lainnya a:hover { background-color: #388E3C; /* Darker accent */ /* [cite: 140] */ transform: translateY(-2px); /* [cite: 140] */ }
+        #others-section .email-info {
+             margin-top: 40px; /* [cite: 141] */
+             font-size: 1.1em; /* [cite: 141] */
+             color: var(--muted-text-color); /* [cite: 141] */
         }
 
         /* --- Footer --- */
         footer {
-            padding: 50px 0; margin-top: 80px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            text-align: center; color: #888;
+            padding: 50px 0; /* [cite: 142] */
+            margin-top: 80px; /* [cite: 142] */
+            border-top: 1px solid rgba(76,175,80,0.18); /* Themed border */ /* [cite: 142] */
+            text-align: center; color: #81C784; /* Muted green text */ /* [cite: 143] */
         }
 
         /* --- Responsive (OPTIMIZED & FIXED) --- */
         @media (max-width: 992px) {
-            .hero-content h1 { font-size: 5.5em; }
+            .hero-content h1 { font-size: 5.5em; /* [cite: 144] */ }
             #ppdb-section .ppdb-content-box {
-                padding: 40px 50px; gap: 30px; flex-direction: column; text-align: center;
+                padding: 40px 50px; /* [cite: 145] */
+                gap: 30px; flex-direction: column; text-align: center; /* [cite: 145] */
             }
-            .ppdb-image-col { flex: none; width: 60%; max-width: 300px; margin: 0 auto; }
-            .ppdb-text-col { text-align: center; }
-            #ppdb-section .ppdb-content-box p { text-align: center; }
-            #pengurus-section #section1 main { flex-direction: column; }
-            #pengurus-section .row { flex-direction: column; gap: 30px; }
-            .pengurus-container { padding: 25px 35px; }
-            .home-grid-section { padding: 40px; }
-            .lainnya-content { flex-direction: column; align-items: stretch; } /* Stack & Stretch */
+            .ppdb-image-col { flex: none; /* [cite: 146] */ width: 60%; max-width: 300px; margin: 0 auto; /* [cite: 146] */ }
+            .ppdb-text-col { text-align: center; /* [cite: 147] */ }
+            #ppdb-section .ppdb-content-box p { text-align: center; /* [cite: 148] */ }
+            #pengurus-section #section1 main { flex-direction: column; /* [cite: 149] */ }
+            #pengurus-section .row { flex-direction: column; gap: 30px; /* [cite: 150] */ }
+            .pengurus-container { padding: 25px 35px; /* [cite: 151] */ }
+            .home-grid-section { padding: 40px; /* [cite: 152] */ }
+            .lainnya-content { flex-direction: column; align-items: stretch; /* [cite: 153] */ }
         }
 
         @media (max-width: 767px) {
-            body { padding-top: 70px; } /* Adjust padding for smaller header */
-            .header-container { padding: 10px 15px; }
-            .page-section { padding: 30px 15px; }
-            .hero-container { min-height: 60vh; }
-            .hero-content h1 { font-size: 3.8em; }
-            .hero-footer { text-align: center; width: 100%; right: 0; bottom: 20px; font-size: 0.9em; }
-            #hamburger-btn { display: flex; }
+            body { padding-top: 70px; /* [cite: 154] */ }
+            .header-container { padding: 10px 15px; /* [cite: 155] */ }
+            .page-section { padding: 30px 15px; /* [cite: 156] */ }
+            .hero-container { min-height: 60vh; /* [cite: 157] */ }
+            .hero-content h1 { font-size: 3.8em; /* [cite: 158] */ }
+            .hero-footer { text-align: center; width: 100%; right: 0; /* [cite: 159] */ bottom: 20px; font-size: 0.9em; /* [cite: 159] */ }
+            #hamburger-btn { display: flex; /* [cite: 160] */ }
             nav#main-nav {
-                display: none; flex-direction: column; width: 100%;
-                background-color: rgba(8, 4, 21, 0.95); position: absolute;
-                top: 100%; left: 0; text-align: center; padding: 10px 0;
-                backdrop-filter: blur(12px); border-top: 1px solid rgba(255, 255, 255, 0.1); gap: 0;
+                display: none; /* [cite: 161] */
+                flex-direction: column; width: 100%; /* [cite: 161] */
+                background-color: rgba(0, 0, 0, 0.95); /* Darker mobile nav */ position: absolute; /* [cite: 162] */
+                top: 100%; left: 0; text-align: center; padding: 10px 0; /* [cite: 162] */
+                backdrop-filter: blur(12px); border-top: 1px solid var(--border-color-soft); gap: 0; /* [cite: 163] */
             }
-            nav#main-nav.is-open { display: flex; }
-            nav#main-nav a { padding: 16px 0; font-size: 1.2em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-            nav#main-nav a:last-child { border-bottom: none; }
-            #ppdb-section h1, #others-section h1 { font-size: 2.5em; margin-bottom: 40px; }
-            #ppdb-section .ppdb-content-box { padding: 40px 25px; }
-            .ppdb-image-col { width: 70%; }
-            #ppdb-section .ppdb-content-box p { font-size: 1em; }
-            .home-grid-section { padding: 35px 30px; }
-            .home-grid-section h1 { font-size: 2.5rem; }
-            .accent-box { font-size: 1.75rem; padding: 35px; }
+            nav#main-nav.is-open { display: flex; /* [cite: 164] */ }
+            nav#main-nav a { padding: 16px 0; font-size: 1.2em; /* [cite: 165] */ border-bottom: 1px solid rgba(76, 175, 80, 0.1); /* [cite: 165] */ }
+            nav#main-nav a:last-child { border-bottom: none; /* [cite: 166] */ }
+            #ppdb-section h1, #others-section h1 { font-size: 2.5em; /* [cite: 167] */ margin-bottom: 40px; /* [cite: 167] */ }
+            #ppdb-section .ppdb-content-box { padding: 40px 25px; /* [cite: 168] */ }
+            .ppdb-image-col { width: 70%; /* [cite: 169] */ }
+            #ppdb-section .ppdb-content-box p { font-size: 1em; /* [cite: 170] */ }
+            .home-grid-section { padding: 35px 30px; /* [cite: 171] */ }
+            .home-grid-section h1 { font-size: 2.5rem; /* [cite: 172] */ }
+            .accent-box { font-size: 1.75rem; padding: 35px; /* [cite: 173] */ }
             #pengurus-section #section1 .pimpinan-box {
-                flex-direction: column; align-items: center; text-align: center; padding: 30px;
+                flex-direction: column; /* [cite: 174] */
+                align-items: center; text-align: center; padding: 30px; /* [cite: 174] */
             }
-            #pengurus-section #section1 .pimpinan-box .asterisk { margin-left: 0; font-size: 7em; }
-            #pengurus-section #section1 .pimpinan-box h2 { font-size: 2.8em; }
-            #pengurus-section #section1 .pimpinan-box p { font-size: 1.3em; }
-            .pengurus-container { padding: 25px 20px; }
-            .button-container { flex-direction: column; align-items: center; gap: 15px; }
-            .ppdb-button { width: 90%; max-width: 320px; padding: 15px 20px; }
-            .card-quote-lainnya .quote { font-size: 24px; }
-            .card-unggulan-lainnya h2 { font-size: 30px; }
+            #pengurus-section #section1 .pimpinan-box .asterisk { margin-left: 0; /* [cite: 175] */ font-size: 7em; /* [cite: 175] */ }
+            #pengurus-section #section1 .pimpinan-box h2 { font-size: 2.8em; /* [cite: 176] */ }
+            #pengurus-section #section1 .pimpinan-box p { font-size: 1.3em; /* [cite: 177] */ }
+            .pengurus-container { padding: 25px 20px; /* [cite: 178] */ }
+            .button-container { flex-direction: column; align-items: center; gap: 15px; /* [cite: 179] */ }
+            .ppdb-button { width: 90%; max-width: 320px; /* [cite: 180] */ padding: 15px 20px; /* [cite: 180] */ }
+            .card-quote-lainnya .quote { font-size: 24px; /* [cite: 181] */ }
+            .card-unggulan-lainnya h2 { font-size: 30px; /* [cite: 182] */ }
         }
 
         @media (max-width: 480px) {
-             .hero-content h1 { font-size: 3.0em; }
-             #ppdb-section h1, #others-section h1 { font-size: 2.1em; }
-             #ppdb-section .ppdb-content-box { padding: 30px 20px; }
-             #ppdb-section .ppdb-content-box p { font-size: 0.9em; }
-             .home-grid-section { padding: 30px 20px; }
-             .home-grid-section h1 { font-size: 2.1rem; }
-             .accent-box { font-size: 1.4rem; padding: 30px; }
-             #pengurus-section #section1 .pimpinan-box h2 { font-size: 2.3em; }
-             #pengurus-section #section1 .pimpinan-box p { font-size: 1.1em; }
-             .image-overlay h3 { font-size: 1.1em; }
-             .image-overlay p { font-size: 0.8em; }
-             .page-section { padding: 30px 10px; }
-             .pengurus-container { padding: 20px 15px; }
+             .hero-content h1 { font-size: 3.0em; /* [cite: 183] */ }
+             #ppdb-section h1, #others-section h1 { font-size: 2.1em; /* [cite: 184] */ }
+             #ppdb-section .ppdb-content-box { padding: 30px 20px; /* [cite: 185] */ }
+             #ppdb-section .ppdb-content-box p { font-size: 0.9em; /* [cite: 186] */ }
+             .home-grid-section { padding: 30px 20px; /* [cite: 187] */ }
+             .home-grid-section h1 { font-size: 2.1rem; /* [cite: 188] */ }
+             .accent-box { font-size: 1.4rem; padding: 30px; /* [cite: 189] */ }
+             #pengurus-section #section1 .pimpinan-box h2 { font-size: 2.3em; /* [cite: 190] */ }
+             #pengurus-section #section1 .pimpinan-box p { font-size: 1.1em; /* [cite: 191] */ }
+             .image-overlay h3 { font-size: 1.1em; /* [cite: 192] */ }
+             .image-overlay p { font-size: 0.8em; /* [cite: 193] */ }
+             .page-section { padding: 30px 10px; /* [cite: 194] */ }
+             .pengurus-container { padding: 20px 15px; /* [cite: 195] */ }
         }
     </style>
 </head>
@@ -401,14 +463,14 @@
                     <h1>Nurul Iman</h1>
                 </main>
                 <footer class="hero-footer">
-                   <p>@Nurulimanofficiall</p>
+                    <p>@Nurulimanofficiall</p>
                 </footer>
             </div>
             <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 my-16">
                 <section class="home-grid-section flex flex-col justify-center">
-                    <h1 class="text-5xl mb-6 select-none">Sejarah<br/>Nurul Iman</h1>
+                    <h1 class="text-5xl mb-6 select-none">Tentang<br/>Nurul Iman</h1>
                     <p class="text-lg leading-relaxed max-w-xl text-gray-300">
-                        Pondok Pesantren Nurul Iman berdiri sejak tahun 1973, di atas tanah wakaf seluas +900m2 dari K.H. Moh Hasanudin (sekaligus sebagai pendiri Pondok Pesantren). Dari awal berdiri sampai dengan sekarang, Ponpes Nurul Iman senantiasa memberikan pengetahuan ilmu keagamaan kepada santrinya. Setelah pendiri Ponpes Nurul Iman wafat, selanjutnya pimpinan Pondok Pesantren diserahkan kepada menantunya yang bernama K.H. Muhammad Toha (Buya). Pada tahun 2016 sampai dengan sekarang. Kebanyakan dari santri tersebut tidak hanya mengenyam pendidikan dari pesantren saja, melainkan mereka juga sambil mengenyam pendidikan di Sekolah atau Madrasah Reguler. Sehingga mereka disini belajar untuk mengatur waktu dengan tepat.
+                        Pondok Pesantren Nurul Iman berdiri sejak tahun 1973, di atas tanah wakaf seluas +900m2 dari K.H. Moh Hasanudin (sekaligus sebagai pendiri Pondok Pesantren). Dari awal berdiri sampai dengan sekarang, Ponpes Nurul Iman senantiasa memberikan pengetahuan ilmu keagamaan kepada santrinya. Setelah pendiri Ponpes Nurul Iman wafat, selanjutnya pimpinan Pondok Pesantren diserahkan kepada menantunya yang bernama K.H. Muhammad Toha (Buya). Pada tahun 2016 sampai dengan sekarang. Kebanyakan dari santri tersebut tidak hanya mengenyam pendidikan dari pesantren saja, melainkan mereka juga sambil mengenyam pendidikan di Sekolah atau Madrasah Reguler. Sehingga mereka disini belajar untuk mengatur waktu dengan tepat. 
                     </p>
                 </section>
                 <section class="flex flex-col space-y-10">
@@ -433,7 +495,7 @@
                     <div class="button-container">
                         <a href="https://docs.google.com/forms/d/15exUy0YLsFVbKmz6xixEXL5WII41Agq7AGfGcL0eoOQ/edit?usp=drive_web&ouid=107543482056113933033" class="ppdb-button" target="_blank" rel="noopener noreferrer">CALON SANTRI PUTRA</a>
                         <a href="https://docs.google.com/forms/d/1zNpguPJBrl3J7V2ObEeIbxPGmUfzzM6rG50T0uo0wig/edit" class="ppdb-button" target="_blank" rel="noopener noreferrer">CALON SANTRI PUTRI</a>
-                    </div>
+                     </div>
                 </div>
             </div>
         </div>
@@ -441,29 +503,29 @@
         <div id="pengurus-section" class="page-section">
             <div class="pengurus-container" id="section1">
                 <main>
-                     <section class="left-panel">
+                      <section class="left-panel">
                         <div class="pimpinan-box">
                             <div class="text-content">
                                 <h2>PIMPINAN</h2>
-                                <p>Drs.KH. Muhamad Toha, M.M.Pd </p>
+                                 <p>Drs.KH. Muhamad Toha, M.M.Pd </p>
                             </div>
                             <span class="asterisk">*</span>
                          </div>
-                         <div class="text-box">
+                          <div class="text-box">
                             <p>Struktur kepengurusan Pondok Pesantren Nurul Iman dibentuk untuk memastikan jalannya program pendidikan dan kegiatan harian dengan baik.</p>
                         </div>
                     </section>
-                    <section class="right-panel image-box-common">
+                     <section class="right-panel image-box-common"> 
                         <img src="https://ik.imagekit.io/rgqle2so1/IMG-20230725-WA0014.jpg?updatedAt=1747999997360" alt="Pimpinan">
                     </section>
                 </main>
             </div>
-            <hr class="separator">
+             <hr class="separator">
             <div class="pengurus-container" id="section2">
                 <div class="row">
                     <div class="image-box-common" tabindex="0">
                         <img src="https://ik.imagekit.io/rgqle2so1/20240602091935__MG_9232.JPG?updatedAt=1748000023256" alt="A Olin Rizky Zazuli">
-                        <div class="image-overlay">
+                         <div class="image-overlay">
                             <h3>Ust. Olin Rizky Zazuli</h3>
                             <p>Bidang Pendidikan & Organisasi Santri.</p>
                         </div>
@@ -476,23 +538,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                 <div class="row">
                     <div class="image-box-common" tabindex="0">
                         <img src="https://ik.imagekit.io/rgqle2so1/Black%20Modern%20Gradient%20Programmer%20Presentation%20(3).jpg?updatedAt=1748002365202" alt="A Sandi Iswara">
                          <div class="image-overlay">
-                             <h3>Ust. Sandi Iswara</h3>
+                               <h3>Ust. Sandi Iswara</h3>
                             <p>Bidang Ketertiban & Koperasi.</p>
                          </div>
                     </div>
                     <div class="image-box-common" tabindex="0">
-                        <img src="https://ik.imagekit.io/rgqle2so1/WhatsApp%20Image%202025-05-23%20at%2021.16.23.jpeg?updatedAt=1748009844534" alt="A Sofyan Hidayat">
+                         <img src="https://ik.imagekit.io/rgqle2so1/WhatsApp%20Image%202025-05-23%20at%2021.16.23.jpeg?updatedAt=1748009844534" alt="A Sofyan Hidayat">
                          <div class="image-overlay">
                              <h3>Ust. Sofyan Hidayat</h3>
                             <p>Bidang Administrasi & Pendidikan.</p>
                         </div>
                     </div>
                  </div>
-             </div>
+              </div>
         </div>
 
         <div id="others-section" class="page-section">
@@ -500,21 +562,19 @@
             <div class="lainnya-content">
                 <div class="card-lainnya card-quote-lainnya">
                     <div class="asterisk">*</div>
-                    <p class="quote">“jangan pernah menyerah dalam menuntut ilmu”</p>
+                     <p class="quote">“jangan pernah menyerah dalam menuntut ilmu”</p>
                 </div>
                 <div class="card-lainnya card-unggulan-lainnya">
                     <h2>Unggulan Nurul Iman</h2>
                     <p>
-                        Pondok Pesantren Nurul Iman mencetak generasi Qur'an. Selain itu, ada juga lulusan-lulusan lainnya seperti <b>Penguasaan Nahwu & Shorof (Metode Tabulas)</b>, <b>Peribadahan Akidah seperti Ahlussunnah Wal Jama'ah</b>, <b>Wajib Tahfidz minimal juz 30 (dengan Tahsin dan Tajwid)</b>, <b>Kutubus Salaf</b>, <b>Marawis & Hadroh</b>, <b>Pencak Silat</b>, dan <b>Pelatihan Komputer</b>.
-                    </p>
+                         Pondok Pesantren Nurul Iman mencetak generasi Qur'an. Selain itu, ada juga lulusan-lulusan lainnya seperti <b>Penguasaan Nahwu & Shorof (Metode Tabulas)</b>, <b>Peribadahan Akidah seperti Ahlussunnah Wal Jama'ah</b>, <b>Wajib Tahfidz minimal juz 30 (dengan Tahsin dan Tajwid)</b>, <b>Kutubus Salaf</b>, <b>Marawis & Hadroh</b>, <b>Pencak Silat</b>, dan <b>Pelatihan Komputer</b>. </p>
                 </div>
             </div>
              <div class="info-button-lainnya">
-                <a href="https://nuruliman123.vercel.app/">Ketuk disini untuk melihat info-info Nurul Iman lainnya!</a>
+                <a href="https://nuruliman123.vercel.app/" target="_blank" rel="noopener noreferrer">Ketuk disini untuk melihat info-info Nurul Iman lainnya!</a>
             </div>
             <p class="email-info">
-                Punya keluhan website seperti bug/crash? Silahkan kirim lewat g-mail: aziarsyirazeim@gmail.com Ya!.
-            </p>
+                 Punya keluhan website seperti bug/crash? Silahkan kirim lewat g-mail: aziarsyirazeim@gmail.com Ya!. </p>
         </div>
     </div>
 
@@ -527,86 +587,83 @@
             const sections = document.querySelectorAll('.page-section');
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const mainNav = document.getElementById('main-nav');
-            const header = document.getElementById('page-header'); // Use ID
+            const header = document.getElementById('page-header'); // [cite: 233] Use ID
 
-            const transitionDuration = 600; // Match CSS transition duration
+            const transitionDuration = 600; // Match CSS transition duration [cite: 77, 233]
 
             function showSection(sectionIdToShow) {
                 sections.forEach(section => {
                     const currentSectionId = section.id;
-                    const isTarget = currentSectionId === sectionIdToShow + '-section';
+                    const isTarget = currentSectionId === sectionIdToShow + '-section'; // [cite: 234]
 
                     if (isTarget) {
                         // Show the target section
                         if (!section.classList.contains('active')) {
-                            section.style.display = 'block';
+                            section.style.display = 'block'; // [cite: 235]
                             // Use requestAnimationFrame or small timeout to ensure 'display' applies before transition
-                            requestAnimationFrame(() => {
-                                 section.classList.add('active');
+                            requestAnimationFrame(() => { // [cite: 236]
+                                 section.classList.add('active'); // [cite: 237]
                             });
                         }
                     } else {
                         // Hide other sections
                         if (section.classList.contains('active')) {
-                            section.classList.remove('active');
+                             section.classList.remove('active'); // [cite: 238]
                             // Set display to none *after* the transition ends
                             setTimeout(() => {
                                 // Double check it wasn't re-activated
-                                if (!section.classList.contains('active')) {
-                                    section.style.display = 'none';
+                                 if (!section.classList.contains('active')) { // [cite: 239]
+                                    section.style.display = 'none'; // [cite: 240]
                                 }
-                            }, transitionDuration);
+                               }, transitionDuration); // [cite: 240]
                         } else {
                              // Ensure it's hidden if not active (initial state & quick clicks)
-                            section.style.display = 'none';
+                            if (section.style.display !== 'none') { // Only change if not already none
+                                section.style.display = 'none'; // [cite: 242]
+                            }
                         }
                     }
                 });
-
                 // Update active link in navigation
                 navLinks.forEach(link => {
-                    link.classList.toggle('active-link', link.dataset.section === sectionIdToShow);
+                    link.classList.toggle('active-link', link.dataset.section === sectionIdToShow); // [cite: 243]
                 });
-
                 // Scroll to top (optional, good for UX)
-                window.scrollTo(0, 0);
+                window.scrollTo(0, 0); // [cite: 244]
             }
 
             function closeMobileMenu() {
-                hamburgerBtn.classList.remove('is-active');
-                mainNav.classList.remove('is-open');
+                hamburgerBtn.classList.remove('is-active'); // [cite: 246]
+                mainNav.classList.remove('is-open'); // [cite: 246]
             }
 
             // Hamburger menu toggle
             hamburgerBtn.addEventListener('click', () => {
-                hamburgerBtn.classList.toggle('is-active');
-                mainNav.classList.toggle('is-open');
+                hamburgerBtn.classList.toggle('is-active'); // [cite: 247]
+                mainNav.classList.toggle('is-open'); // [cite: 247]
             });
-
             // Navigation link clicks
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
                     const sectionId = event.target.dataset.section;
                     showSection(sectionId);
-                    // Close mobile menu on link click if it's open
-                    if (window.innerWidth <= 767 && mainNav.classList.contains('is-open')) {
-                        closeMobileMenu();
+                     // Close mobile menu on link click if it's open
+                    if (window.innerWidth <= 767 && mainNav.classList.contains('is-open')) { // [cite: 248]
+                        closeMobileMenu(); // [cite: 249]
                     }
-                });
+                 });
             });
-
             // Header scroll effect
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 30) {
-                    header.classList.add('scrolled');
+                    header.classList.add('scrolled'); // [cite: 250]
                 } else {
-                    header.classList.remove('scrolled');
+                    header.classList.remove('scrolled'); // [cite: 251]
                 }
-            }, { passive: true });
-
+            }, { passive: true }); // [cite: 251]
             // Show the initial section (Home)
-            showSection('home');
+            showSection('home'); // [cite: 252]
         });
     </script>
 
