@@ -183,7 +183,7 @@
             padding: 80px 0 60px 0; /* Adjusted padding */
             text-align: center;
         }
-        .pelajaran-section h2, .persyaratan-section h2 {
+        .pelajaran-section h2, .persyaratan-section h2, .faq-section h2 { /* Added FAQ h2 */
             font-size: 3em;
             font-weight: 700;
             margin-bottom: 50px;
@@ -290,6 +290,69 @@
         .persyaratan-content ol li span {
             color: var(--muted-text-color);
             font-size: 0.9em;
+        }
+
+        /* --- FAQ Section --- */
+        .faq-section {
+            padding: 80px 20px 60px 20px;
+            text-align: center;
+            max-w-7xl;
+            margin: 40px auto;
+        }
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+            max-w-4xl;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: rgba(5, 15, 10, 0.45);
+            backdrop-filter: blur(6px);
+            border-radius: 15px;
+            border: 1px solid var(--border-color-soft);
+            transition: border-color 0.35s ease;
+            overflow: hidden; /* Prevent content spill during animation (if added later) */
+        }
+        .faq-item[open] { border-color: rgba(76, 175, 80, 0.7); }
+        .faq-item:hover { border-color: rgba(76, 175, 80, 0.6); }
+        .faq-question {
+            background: transparent;
+            padding: 25px 30px;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.25em;
+            font-weight: 600;
+            color: var(--light-text-color);
+            list-style: none; /* Hide default marker */
+        }
+        .faq-question::-webkit-details-marker { display: none; }
+        .faq-question:hover { background-color: rgba(76, 175, 80, 0.1); }
+        .faq-question i {
+            transition: transform 0.3s ease-in-out;
+            color: var(--accent-color);
+            font-size: 0.9em;
+            margin-left: 15px;
+        }
+        .faq-item[open] .faq-question i { transform: rotate(180deg); }
+        .faq-answer {
+            color: var(--muted-text-color);
+            background-color: rgba(0,0,0,0.2);
+            padding: 25px 30px;
+            font-size: 1.05em;
+            line-height: 1.7;
+            border-top: 1px solid var(--border-color-soft);
+            animation: fadeIn 0.5s ease-out; /* Simple fade-in animation */
+        }
+        .faq-answer p { margin: 0; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
 
@@ -472,7 +535,7 @@
         .lainnya-content {
             display: flex;
             gap: 30px; width: 100%;
-            max-width: 1000px;
+            max-w: 1000px;
             flex-wrap: wrap;
             justify-content: center; margin-bottom: 50px;
         }
@@ -571,7 +634,7 @@
             nav#main-nav a { padding: 16px 0; font-size: 1.2em; border-bottom: 1px solid rgba(76, 175, 80, 0.1); }
             nav#main-nav a:last-child { border-bottom: none; }
             .pelajaran-section, .persyaratan-section { padding: 60px 0; }
-            .pelajaran-section h2, .persyaratan-section h2 { font-size: 2.5em; margin-bottom: 30px; }
+            .pelajaran-section h2, .persyaratan-section h2, .faq-section h2 { font-size: 2.5em; margin-bottom: 30px; } /* Added FAQ h2 */
             .pelajaran-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 15px; }
             .pelajaran-card { padding: 30px 25px; min-height: auto; }
             .persyaratan-content { padding: 40px 30px; }
@@ -593,12 +656,14 @@
             .ppdb-button { width: 90%; max-width: 320px; padding: 15px 20px; }
             .card-quote-lainnya .quote { font-size: 24px; }
             .card-unggulan-lainnya h2 { font-size: 30px; }
+            .faq-question { font-size: 1.1em; padding: 20px 25px; } /* FAQ Responsive */
+            .faq-answer { font-size: 0.95em; padding: 20px 25px; } /* FAQ Responsive */
         }
 
         @media (max-width: 480px) {
              .hero-content h1 { font-size: 3.0em; }
              #ppdb-section h1, #others-section h1 { font-size: 2.1em; }
-             .pelajaran-section h2, .persyaratan-section h2 { font-size: 2.1em; }
+             .pelajaran-section h2, .persyaratan-section h2, .faq-section h2 { font-size: 2.1em; } /* Added FAQ h2 */
              .persyaratan-content { padding: 30px 20px; }
              .persyaratan-content ol li { padding-left: 45px; }
              #ppdb-section .ppdb-content-box { padding: 30px 20px; }
@@ -613,6 +678,8 @@
              .page-section { padding: 30px 10px; }
              #home-section { padding: 0; }
              .pengurus-container { padding: 20px 15px; }
+             .faq-question { font-size: 1em; padding: 15px 20px; } /* FAQ Responsive */
+             .faq-answer { font-size: 0.9em; padding: 15px 20px; } /* FAQ Responsive */
         }
     </style>
 </head>
@@ -630,8 +697,7 @@
                 <span class="hamburger-line"></span>
             </button>
             <nav id="main-nav">
-                <a class="nav-link" href="#" data-section="home">Home</a>
-                <a class="nav-link" href="#" data-section="ppdb">PPDB</a>
+                <a class="nav-link" href="#" data-section="home">Utama</a> <a class="nav-link" href="#" data-section="ppdb">PPDB</a>
                 <a class="nav-link" href="#" data-section="pengurus">PENGURUS</a>
                 <a class="nav-link" href="#" data-section="others">Lainnya</a>
             </nav>
@@ -705,7 +771,48 @@
                 </div>
             </section>
 
-        </div>
+            <section class="faq-section">
+                <h2>Pertanyaan yang Sering Diajukan (FAQ)</h2>
+                <div class="faq-grid">
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Bagaimana cara mendaftar sebagai santri baru?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Anda bisa mendaftar melalui link PPDB yang tersedia di menu PPDB. Silakan pilih jalur pendaftaran untuk calon santri putra atau putri dan isi formulir yang disediakan.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Apa saja persyaratan yang dibutuhkan?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Persyaratan lengkap dapat dilihat pada bagian "Persyaratan Masuk". Umumnya meliputi fotokopi ijazah, NISN, akta lahir, KTP orang tua, Kartu Keluarga, dan pas foto terbaru.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Apa saja materi pelajaran utama di Nurul Iman?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Kami fokus pada pembelajaran Kitab Kuning (sesuai tingkatan), Baca Al-Qur'an (Tajwid & Tahfidz min. Juz 30), pembinaan akhlak, serta kemandirian santri. Ada juga program unggulan seperti Nahwu Shorof dan lainnya.</p>
+                        </div>
+                    </details>
+                     <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Apakah ada kegiatan ekstrakurikuler?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Ya, kami memiliki beberapa kegiatan ekstrakurikuler untuk mengembangkan minat dan bakat santri, seperti Marawis & Hadroh, Pencak Silat, dan Pelatihan Komputer.</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+            </div>
 
         <div id="ppdb-section" class="page-section">
             <h1>Info PPDB Nurul Iman Cisalak</h1>
@@ -839,9 +946,9 @@
                                  }
                                }, transitionDuration);
                         } else {
-                            if (section.style.display !== 'none') {
+                             if (section.style.display !== 'none') {
                                 section.style.display = 'none';
-                            }
+                             }
                         }
                     }
                 });
@@ -882,6 +989,15 @@
                     header.classList.remove('scrolled');
                 }
             }, { passive: true });
+
+            // FAQ - Prevent default <details> behavior if using JS animation (currently disabled)
+            // We use native <details> with CSS transitions on the icon
+            document.querySelectorAll('.faq-question').forEach(summary => {
+                 summary.addEventListener('click', (e) => {
+                    // No need to prevent default if using native behavior
+                 });
+            });
+
             // Show the initial section (Home)
             showSection('home');
         });
