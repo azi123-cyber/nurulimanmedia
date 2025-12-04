@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         
         <p className="text-gray-500 text-sm text-center md:text-right">
           &copy; {new Date().getFullYear()} Nurul Iman Media. All rights reserved.<br/>
-          <span className="text-xs opacity-50">Designed with ❤️ by Azi & AI</span>
+          <span className="text-xs opacity-50">Designed with ❤️ by Azi</span>
         </p>
       </div>
     </footer>
