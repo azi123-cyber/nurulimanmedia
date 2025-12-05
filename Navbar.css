@@ -1,0 +1,21 @@
+.nav-item {
+  @apply text-gray-300 hover:text-white transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium;
+}
+
+/* Gaya untuk link yang sedang aktif */
+.nav-item.active {
+  @apply text-white;
+}
+
+/* Garis bawah yang akan beranimasi */
+.underline {
+  position: absolute;
+  bottom: 12px; /* Sesuaikan posisi vertikalnya */
+  height: 2px;
+  background-color: #10b981; /* Warna emerald-500 */
+  border-radius: 1px;
+  opacity: 0; /* Sembunyikan di awal */
+
+  /* INI KUNCINYA: transisi untuk properti left, width, dan opacity */
+  transition: left 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
